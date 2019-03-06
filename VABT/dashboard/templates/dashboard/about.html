@@ -1,0 +1,10 @@
+{%extends "dashboard/base.html" %}
+{% block content %}
+<h1>About Page:</h1>
+
+    {% if request.user.is_active and request.user.is_staff %}
+    <h1>Admin woooo!!</h1>
+    {% endif %}
+
+{% endblock content%}
+
