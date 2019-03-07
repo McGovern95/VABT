@@ -87,5 +87,5 @@ def about(request):
 def certifier_home(request):
     return render(request, 'dashboard/certifier_home.html',{'title':'Home'})
 
-
-
+def contact(request):
+    return render(request, 'dashboard/contact.html',{'title':'Contact'})

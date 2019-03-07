@@ -3,9 +3,11 @@
 <h1>About Page:</h1>
 
     {% if request.user.is_staff %}
-    <h1>You are a Certifer</h1>
-    {%else%}
+        <h1>You are a Certifer</h1>
+    {%elif request.user.is_authenticated %}
        <h1>You are a Student</h1>
+    {%else%}
+        <h1> What is VABT? (coming soon)  </h1>
     {% endif %}
 
 {% endblock content%}
