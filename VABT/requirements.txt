@@ -1,1 +1,7 @@
-django >=1.9, <2
+Django==2.1.7
+django-crispy-forms==1.7.2
+Pillow==5.4.1
+pip==19.0.3
+pytz==2018.9
+setuptools==40.8.0
+
