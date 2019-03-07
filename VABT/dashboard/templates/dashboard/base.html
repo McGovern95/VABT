@@ -26,7 +26,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{%url 'dashboard-home'%}">Home</a>
+                        {% if request.user.is_staff %}
+                            <a class="nav-item nav-link" href="{%url 'certifier-home'%}">Home</a> 
+                        {% else %}
+                            <a class="nav-item nav-link" href="{%url 'dashboard-home'%}">Home</a> 
+                        {% endif %}
                         <a class="nav-item nav-link" href="{%url 'dashboard-about'%}">About</a>
                     </div>
                     <!-- Navbar Right Side -->

@@ -1,10 +1,5 @@
 {%extends "dashboard/base.html" %}
 {% block content %}
-
- {% if request.user.is_active and request.user.is_staff %}
-    {% include "dashboard/certifier_home.html" %}
- {% endif %}
-
     {% for post in posts %}
 <article class="media content-section">
     <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" />

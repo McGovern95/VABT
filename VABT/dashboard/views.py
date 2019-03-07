@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import get_user
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
         ListView,
@@ -37,7 +38,9 @@ def home(request):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'dashboard/home.html' #<app>/<model>_<viewtype>.html
+
+    template_name = 'dashboard/home.html'
+
     context_object_name = 'posts'
     ordering  = ['-date_posted']
 
@@ -77,4 +80,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
 
 def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
+
+def certifier_home(request):
+    return render(request, 'dashboard/certifier_home.html',{'title':'Home'})
+
+
 
