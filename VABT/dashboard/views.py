@@ -34,7 +34,10 @@ def home(request):
     context = {
         'posts': Post.objects.all() #posts
         }
-    return render(request, 'dashboard/home.html', context)
+    if (request.user.is_staff):
+        return render(request, 'dashbaord/certifier_home.html)', context)
+    else:
+        return render(request, 'dashboard/home.html', context)
 
 class PostListView(ListView):
     model = Post
