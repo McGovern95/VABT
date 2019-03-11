@@ -4,7 +4,7 @@
     {% if request.user.is_staff %}	
           <meta http-equiv="REFRESH" content="0;url=certifier_home/">	
     {% elif request.user.is_authenticated %}
-          <h2> This is the Student's page!</h2>
+          <meta http-equiv="REFRESH" content="0;url=profile/">
     {% else %}
            <h2> Unauthenticated homepage! </h2> 
     {% endif %}
