@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import get_user
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
         ListView,
@@ -84,6 +85,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
 def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
 
+@user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):
     return render(request, 'dashboard/certifier_home.html',{'title':'Home'})
 
