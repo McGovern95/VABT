@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import get_user
+from django.contrib.auth.models import User
+from users.models import Profile
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -87,7 +89,11 @@ def about(request):
 
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):
-    return render(request, 'dashboard/certifier_home.html',{'title':'Home'})
+    #maybe displays users lol
+    #users = User.object.all()
+    #print (users)                                                         , 'users' : users
+    return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
+
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
