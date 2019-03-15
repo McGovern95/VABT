@@ -23,3 +23,5 @@ class Profile(models.Model): #one to one
 #hmmm, display user here somehow 
 #class User(models.Model):
 #    objects = models.Manager()
+
+##comment for tag? 
