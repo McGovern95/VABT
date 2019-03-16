@@ -35,6 +35,7 @@
     <Compile Include="dashboard\decorators.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="dashboard\migrations\0001_initial.py" />
     <Compile Include="dashboard\migrations\__init__.py" />
     <Compile Include="dashboard\models.py" />
     <Compile Include="dashboard\tests.py" />
@@ -45,6 +46,8 @@
     <Compile Include="users\admin.py" />
     <Compile Include="users\apps.py" />
     <Compile Include="users\forms.py" />
+    <Compile Include="users\migrations\0001_initial.py" />
+    <Compile Include="users\migrations\0002_chapter_user.py" />
     <Compile Include="users\migrations\__init__.py" />
     <Compile Include="users\models.py" />
     <Compile Include="users\signals.py" />
@@ -74,6 +77,7 @@
     <Content Include="dashboard\__pycache__\urls.cpython-37.pyc" />
     <Content Include="dashboard\__pycache__\views.cpython-37.pyc" />
     <Content Include="dashboard\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="db.sqlite3" />
     <Content Include="django_project.pyproj.user" />
     <Content Include="media\default.jpg" />
     <Content Include="media\profile_pics\05-patrick.w700.h700.jpg" />
@@ -94,6 +98,14 @@
     <Content Include="users\__pycache__\signals.cpython-37.pyc" />
     <Content Include="users\__pycache__\views.cpython-37.pyc" />
     <Content Include="users\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="VABT\__pycache__\settings.cpython-36.pyc" />
+    <Content Include="VABT\__pycache__\settings.cpython-37.pyc" />
+    <Content Include="VABT\__pycache__\urls.cpython-36.pyc" />
+    <Content Include="VABT\__pycache__\urls.cpython-37.pyc" />
+    <Content Include="VABT\__pycache__\wsgi.cpython-36.pyc" />
+    <Content Include="VABT\__pycache__\wsgi.cpython-37.pyc" />
+    <Content Include="VABT\__pycache__\__init__.cpython-36.pyc" />
+    <Content Include="VABT\__pycache__\__init__.cpython-37.pyc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dashboard\" />
@@ -115,6 +127,7 @@
     <Folder Include="users\templates\users\" />
     <Folder Include="users\__pycache__\" />
     <Folder Include="VABT\" />
+    <Folder Include="VABT\__pycache__\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
