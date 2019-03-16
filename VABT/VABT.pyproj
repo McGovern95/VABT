@@ -35,7 +35,6 @@
     <Compile Include="dashboard\decorators.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="dashboard\migrations\0001_initial.py" />
     <Compile Include="dashboard\migrations\__init__.py" />
     <Compile Include="dashboard\models.py" />
     <Compile Include="dashboard\tests.py" />
@@ -46,7 +45,6 @@
     <Compile Include="users\admin.py" />
     <Compile Include="users\apps.py" />
     <Compile Include="users\forms.py" />
-    <Compile Include="users\migrations\0001_initial.py" />
     <Compile Include="users\migrations\__init__.py" />
     <Compile Include="users\models.py" />
     <Compile Include="users\signals.py" />
@@ -76,7 +74,6 @@
     <Content Include="dashboard\__pycache__\urls.cpython-37.pyc" />
     <Content Include="dashboard\__pycache__\views.cpython-37.pyc" />
     <Content Include="dashboard\__pycache__\__init__.cpython-37.pyc" />
-    <Content Include="db.sqlite3" />
     <Content Include="django_project.pyproj.user" />
     <Content Include="media\default.jpg" />
     <Content Include="media\profile_pics\05-patrick.w700.h700.jpg" />
