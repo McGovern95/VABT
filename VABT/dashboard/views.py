@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import get_user
 from django.contrib.auth.models import User
 from users.models import Profile
+from users.models import UserExtended 
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -88,12 +89,25 @@ def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
 
 @user_passes_test(lambda u: u.is_staff)
-def certifier_home(request):
-    #maybe displays users lol
-    #users = User.object.all()
-    #print (users)                                                         , 'users' : users
+def certifier_home(request):                                                   
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
-
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
+
+#checklist stuff here: https://mvp.nmsu.edu/veterans-and-dependents/student-certification-checklists/
+#helpful repo im sure: https://github.com/sibtc/simple-file-upload ~ https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
+def checklist(request):
+ 
+    fields = UserExtended.objects.get(user=request.user) #takes the extended fields
+    #delete pass when making the form
+    if(fields.is_firsttime):
+        pass#form for first time 
+    elif(fields.chapter == '33'):
+        pass#form for chapter 33
+    elif(fields.chapter == '30'):
+        pass#form for chapter 30
+        
+
+    #still need more html pages for other chapters
+    ##hey josh, is this the right way to do it? will we create a from based on the chapter? 
