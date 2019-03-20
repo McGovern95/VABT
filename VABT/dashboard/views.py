@@ -13,6 +13,7 @@ from django.views.generic import (
         DeleteView
         )
 from .models import Post
+from .models import User
 #from django.http import HttpResponse
 #Create your views here.
 
@@ -36,43 +37,43 @@ from .models import Post
 
 def home(request):
     context = {
-        'posts': Post.objects.all() #posts
+        'users': User.objects.all() #users
         }
     if (request.user.is_staff):
-        return render(request, 'dashbaord/certifier_home.html)', context)
+        return render(request, 'dashbaord/home.html)', context)
     else:
-        return render(request, 'dashboard/home.html', context)
+        return render(request, 'users/profile.html', context)
 
 class PostListView(ListView):
-    model = Post
+    model = User
 
     template_name = 'dashboard/home.html'
 
-    context_object_name = 'posts'
-    ordering  = ['-date_posted']
+    context_object_name = 'users'
+   #ordering  = ['-date_posted']
 
 class PostDetailView(DetailView):
-    model = Post
+    model = User
     
 class PostCreateView(LoginRequiredMixin ,CreateView):
-    model = Post
-    fields = ['title', 'content']
+    model = User
+    fields = ['username', 'content']
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.user = self.request.user.is_staff
         return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['username', 'content']
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.user = self.request.user.is_staff
         return super().form_valid(form)
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
+        if self.request.user == user.username.is_staff:
             return True
         return False
 
@@ -81,7 +82,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
     success_url = '/'
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
+        if self.request.user == user.username.is_staff:
             return True
         return False
 
@@ -90,7 +91,7 @@ def about(request):
 
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):                                                   
-    return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
+    return render(request, 'dashboard/home.html',{'title':'Home' })
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
@@ -107,6 +108,9 @@ def checklist(request):
         pass#form for chapter 33
     elif(fields.chapter == '30'):
         pass#form for chapter 30
+    if(user.is_staff):
+        fields.is_student = False
+        
         
 
     #still need more html pages for other chapters
