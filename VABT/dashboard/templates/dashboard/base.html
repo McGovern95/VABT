@@ -36,6 +36,8 @@
                             <a class="nav-item nav-link" href="{%url 'certifier-home'%}">Home</a> 
                         {% elif requst.user.us_student %}
                             <a class="nav-item nav-link" href="{%url 'student-home'%}">Home</a> 
+                        {% else %}
+                            <a class="navbar-brand mr-4" href="{%url 'dashboard-home'%}">Home</a>
                         {% endif %}
                         <a class="nav-item nav-link" href="{%url 'dashboard-about'%}">About</a>
                         <a class="nav-item nav-link" href="{%url 'dashboard-contact'%}">Contact</a>
