@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 # Create your models here.
-
-
 #extended default User model
 #usage: make sure you import from users.models import UserExtended 
 #   ex = UserExtended.objects.get(user=request.user) ~ this line gets the fields 
@@ -36,8 +34,5 @@ class Profile(models.Model): #one to one
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
-#hmmm, display user here somehow 
-#class User(models.Model):
-#    objects = models.Manager()
 
-##comment for tag? 
+

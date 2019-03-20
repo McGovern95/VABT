@@ -1,3 +1,26 @@
 ﻿{%extends "dashboard/base.html" %}
 {% block content %}
+    
+    {% if user.userextended.is_firsttime %}
+       first time table and submittions for form
+    {% elif user.userextended.chapter == 33 %}
+       chapter 33 table and submittions for form
+    {% elif users.userextended.chapter == 31 %}
+       chapter 31 table and submittions for form
+    {% elif users.userextended.chapter == 30 %}
+       chapter 30 table and submittions for form
+    {% elif users.userextended.chapter == 35 %}
+       chapter 35 table and submittions for form
+    {% elif users.userextended.chapter == 1606 %}
+       chapter 1606 table and submittions for form
+    {% endif %}
+
+    {#<form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+  </form>#}
+
+
+
 {% endblock content %}

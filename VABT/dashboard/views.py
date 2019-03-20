@@ -93,28 +93,24 @@ def about(request):
 def certifier_home(request):                                                   
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
 
-def student_home(request):                                                   
-    return render(request, 'dashboard/student_home.html',{'title':'Home' })
+def student_home(request):  
+
+    ##s0 some form close depending on their  chapter type? 
+
+    #fields = UserExtended.objects.get(user=request.user) #takes the extended fields
+    
+    #if request.method == 'POST':
+    #    form = DocumentForm(request.POST, render.FILES)
+    #    if form.is_valid():
+    #        form.save()
+    #        return redirect('home')
+    #else:
+    #    form = DocumentForm()
+  
+    return render(request, 'dashboard/student_home.html',{'title':'Home'})
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
 
 #checklist stuff here: https://mvp.nmsu.edu/veterans-and-dependents/student-certification-checklists/
 #helpful repo im sure: https://github.com/sibtc/simple-file-upload ~ https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
-def checklist(request):
- 
-    fields = UserExtended.objects.get(user=request.user) #takes the extended fields
-    #delete pass when making the form
-    if(fields.is_firsttime):
-        pass#form for first time 
-    elif(fields.chapter == '33'):
-        pass#form for chapter 33
-    elif(fields.chapter == '30'):
-        pass#form for chapter 30
-    if(user.is_staff):
-        fields.is_student = False
-        
-        
-
-    #still need more html pages for other chapters
-    ##hey josh, is this the right way to do it? will we create a from based on the chapter? 
