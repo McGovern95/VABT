@@ -39,15 +39,15 @@ def home(request):
     context = {
         'users': User.objects.all() #users
         }
-    if (request.user.is_staff):
-        return render(request, 'dashbaord/home.html)', context)
+    if (request.user.is_authenticated and request.user.is_staff == False):
+        return render(request, 'dashboard/student_home.html', context)
     else:
-        return render(request, 'users/profile.html', context)
+        return render(request, 'dashboard/home.html', context)
 
 class PostListView(ListView):
     model = User
 
-    template_name = 'dashboard/home.html'
+    template_name = 'dashboard/certifier_home.html'
 
     context_object_name = 'users'
    #ordering  = ['-date_posted']
@@ -91,7 +91,10 @@ def about(request):
 
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):                                                   
-    return render(request, 'dashboard/home.html',{'title':'Home' })
+    return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
+
+def student_home(request):                                                   
+    return render(request, 'dashboard/student_home.html',{'title':'Home' })
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})

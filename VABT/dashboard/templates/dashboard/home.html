@@ -1,37 +1,10 @@
 {%extends "dashboard/base.html" %}
 {% block content %}
-
-    {% if request.user.is_staff %}	
-    {% for user in users %}
-        {% if user.is_staff == False %}
-        <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="">{{ user.username }}</a>
-                </div>
-            </div>
-        </article>
-        {% endif %}
-    {% endfor %}
-
-    {% elif request.user.is_authenticated %}
-          <meta http-equiv="REFRESH" content="0;url=profile/">
+    {% if user.is_staff %}	
+        <meta http-equiv="Refresh" content="0; url=certifier_home">
     {% else %}
            <h2> Unauthenticated homepage! </h2> 
     {% endif %}
     
-{% for post in posts %}
-<article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" />
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y T g:i" }}</small>
-        </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
-    </div>
-</article>
-    {% endfor %}
+]
 {% endblock content %}

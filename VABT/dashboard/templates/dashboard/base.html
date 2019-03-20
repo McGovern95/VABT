@@ -22,6 +22,8 @@
             <div class="container">
                 {% if request.user.is_staff %}
                     <a class="navbar-brand mr-4" href="{%url 'certifier-home'%}">VA Benefit Tracker</a>
+                {% elif request.user.is_student %}
+                    <a class="navbar-brand mr-4" href="{%url 'student-home'%}">VA Benefit Tracker</a>
                 {% else %}
                     <a class="navbar-brand mr-4" href="{%url 'dashboard-home'%}">VA Benefit Tracker</a>
                 {% endif %}
@@ -32,8 +34,8 @@
                     <div class="navbar-nav mr-auto">
                         {% if request.user.is_staff %}
                             <a class="nav-item nav-link" href="{%url 'certifier-home'%}">Home</a> 
-                        {% else %}
-                            <a class="nav-item nav-link" href="{%url 'dashboard-home'%}">Home</a> 
+                        {% elif requst.user.us_student %}
+                            <a class="nav-item nav-link" href="{%url 'student-home'%}">Home</a> 
                         {% endif %}
                         <a class="nav-item nav-link" href="{%url 'dashboard-about'%}">About</a>
                         <a class="nav-item nav-link" href="{%url 'dashboard-contact'%}">Contact</a>
