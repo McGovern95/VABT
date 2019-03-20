@@ -12,9 +12,10 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():#django handles backend to validate some stuff
             username = form.cleaned_data.get('username') #flash message
-           
             form.save()#omaga! so easy
             request.user.is_staff = False
+            request.user.is_student = True
+            request.user.is_firsttime = True
             messages.success(request, f'Your account has been created! You are now able to log in!')
             return redirect('login')
     else:
