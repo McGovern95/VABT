@@ -3,6 +3,7 @@
     
     {% if user.userextended.is_firsttime %}
           <table style="width:100%">
+          <caption></caption>
           <tr>
             <th>First Visit Files</th>
             <th>Checklist</th> 
@@ -49,9 +50,10 @@
             </td>
           </tr>
         </table>
-      {% endif %}
+    {% endif %}
     {% if user.userextended.chapter == '33' %}
         <table style="width:100%">
+        <caption></caption>
           <tr>
             <th>Chapter 33 Benefits</th>
             <th>Checklist</th> 
@@ -79,7 +81,8 @@
           </tr>
         </table>
     {% elif users.userextended.chapter == '31' %}
-       c<table style="width:100%">
+       <table style="width:100%">
+       <caption></caption>
           <tr>
             <th>Chapter 31 Benefits</th>
             <th>Checklist</th> 
@@ -107,7 +110,8 @@
           </tr>
         </table>
     {% elif users.userextended.chapter == '30' %}
-       c<table style="width:100%">
+       <table style="width:100%">
+       <caption></caption>
           <tr>
             <th>Chapter 30 Benefits</th>
             <th>Checklist</th> 
@@ -136,6 +140,7 @@
         </table>
     {% elif users.userextended.chapter == '35' %}
        <table style="width:100%">
+       <caption></caption>
           <tr>
             <th>Chapter 35 Benefits</th>
             <th>Checklist</th> 
@@ -164,6 +169,7 @@
         </table>
     {% elif users.userextended.chapter == '1606' %}
        <table style="width:100%">
+        <caption></caption>
           <tr>
             <th>Chapter 1606 Benefits</th>
             <th>Checklist</th> 
@@ -191,9 +197,5 @@
           </tr>
         </table>
     {% endif %}
-
-    
-
-
 
 {% endblock content %}
