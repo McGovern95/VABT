@@ -2,24 +2,197 @@
 {% block content %}
     
     {% if user.userextended.is_firsttime %}
-       first time table and submittions for form
-    {% elif user.userextended.chapter == 33 %}
-       chapter 33 table and submittions for form
-    {% elif users.userextended.chapter == 31 %}
-       chapter 31 table and submittions for form
-    {% elif users.userextended.chapter == 30 %}
-       chapter 30 table and submittions for form
-    {% elif users.userextended.chapter == 35 %}
-       chapter 35 table and submittions for form
-    {% elif users.userextended.chapter == 1606 %}
-       chapter 1606 table and submittions for form
+          <table style="width:100%">
+          <tr>
+            <th>First Visit Files</th>
+            <th>Checklist</th> 
+            <th>Upload</th>
+          </tr>
+          <tr>
+            <td>Certificate of Eligibility</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>NMSU MVP Information Sheet</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>NMSU MVP Student Responsibilities Form</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+              <tr>
+            <td>NMSU MVP Resident Tuition Application</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+        </table>
+      {% endif %}
+    {% if user.userextended.chapter == '33' %}
+        <table style="width:100%">
+          <tr>
+            <th>Chapter 33 Benefits</th>
+            <th>Checklist</th> 
+            <th>Upload</th>
+          </tr>
+          <tr>
+            <td>Concise Student Schedule</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Star Degree Audit</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+        </table>
+    {% elif users.userextended.chapter == '31' %}
+       c<table style="width:100%">
+          <tr>
+            <th>Chapter 31 Benefits</th>
+            <th>Checklist</th> 
+            <th>Upload</th>
+          </tr>
+          <tr>
+            <td>Concise Student Schedule</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Star Degree Audit</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+        </table>
+    {% elif users.userextended.chapter == '30' %}
+       c<table style="width:100%">
+          <tr>
+            <th>Chapter 30 Benefits</th>
+            <th>Checklist</th> 
+            <th>Upload</th>
+          </tr>
+          <tr>
+            <td>Concise Student Schedule</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Star Degree Audit</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+        </table>
+    {% elif users.userextended.chapter == '35' %}
+       <table style="width:100%">
+          <tr>
+            <th>Chapter 35 Benefits</th>
+            <th>Checklist</th> 
+            <th>Upload</th>
+          </tr>
+          <tr>
+            <td>Concise Student Schedule</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Star Degree Audit</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+        </table>
+    {% elif users.userextended.chapter == '1606' %}
+       <table style="width:100%">
+          <tr>
+            <th>Chapter 1606 Benefits</th>
+            <th>Checklist</th> 
+            <th>Upload</th>
+          </tr>
+          <tr>
+            <td>Concise Student Schedule</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Star Degree Audit</td>
+            <td>NO</td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Upload</button>
+                </form>
+            </td>
+          </tr>
+        </table>
     {% endif %}
 
-    {#<form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-  </form>#}
+    
 
 
 
