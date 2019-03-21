@@ -3,7 +3,36 @@
     {% if user.is_staff %}	
         <meta http-equiv="Refresh" content="0; url=certifier_home">
     {% else %}
-           <h1> Welcome to VABT </h1> 
-           <h3> How to Register </h3>
+        <div class="jumbotron">
+        <h1>Veteran Affairs Benefit Tracker</h1>
+        <p class="lead">Welcome to VABT please login in the top corner to access your NMSU benefit information</p>
+    
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>New User</h2>
+                <p>
+                    If you are a new user feel free to click register
+                    in the top right corner to sign up for a new account.
+                </p>
+                <p><a class="btn btn-default" href="https://mvp.nmsu.edu/">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Veteran Affairs Benefit Eligibility</h2>
+                <p>Need to make sure your still eligable for your chapter of benefits?
+                   Check online on the official Veteran Affarirs website.       
+                </p>
+                <p><a class="btn btn-default" href="https://explore.va.gov/education-training">Official Website &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Need to Register Still?</h2>
+                <p>Still need to see what classes are available? Visit the NMSU website and sign in to see 
+                   what you can register for.
+                </p>
+                <p><a class="btn btn-default" href="https://idp.quicklaunchsso.com/authenticationendpoint/login.do?commonAuthCallerPath=%2Fpassivests&forceAuth=false&passiveAuth=false&tenantDomain=nmsu.edu&wa=wsignin1.0&wct=2019-03-01T04%3A31%3A28Z&wctx=rm%3D0%26id%3Dpassive%26ru%3D%252fcas%252flogin%253fservice%253dhttps%25253A%25252F%25252Fmy.nmsu.edu%25252Fc%25252Fportal%25252Flogin&wtrealm=https%3A%2F%2Fcps55.quicklaunchsso.com%2F&sessionDataKey=b16d387e-6b7c-41f2-baa1-b8f7d315a77d&relyingParty=https%3A%2F%2Fcps55.quicklaunchsso.com%2F&type=passivests&sp=cps55.quicklaunchsso.com&isSaaSApp=false&authenticators=BasicAuthenticator:LOCAL">My NMSU &raquo;</a></p>
+            </div>
+        </div>
+    
     {% endif %}
 {% endblock content %}
