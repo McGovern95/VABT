@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 from django.core.validators import FileExtensionValidator
 # Create your models here.
 #extended default User model
@@ -21,19 +23,31 @@ class UserExtended(models.Model):
         return 'students/user_{0}/{1}'.format(instance.user.id,filename)
 
     ###all files for first time peeps
-    cert_of_elig = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
+    cert_of_elig = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null=True)
     MVP_info_sheet = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     stud_respon = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
-    Resid_tuit_app = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
+    resid_tuit_app = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     #everyone else ususally 
-    Conc_stud_sched = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
+    conc_stud_sched = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     star_deg_audit = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
 
-
     #for printing and checking
+    #def __str__(self):
+    #    return '%s %s %s' % (self.chapter, self.is_firsttime, self.is_student)
+
     def __str__(self):
-        return '%s %s %s' % (self.chapter, self.is_firsttime, self.is_student)
-    
+        return self.user.username
+
+    @receiver(post_save, sender=User)
+    def update_user_extension(sender, instance, created, **kwargs):
+        if created:
+            UserExtended.objects.create(user=instance)
+            instance.userextension.save()
+
+    def save(self, *args,**kwargs):
+        super(UserExtended,self).save(*args,**kwargs)
+
+
 class Profile(models.Model): #one to one
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')

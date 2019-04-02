@@ -34,7 +34,7 @@
                     <div class="navbar-nav mr-auto">
                         {% if request.user.is_staff %}
                             <a class="nav-item nav-link" href="{%url 'certifier-home'%}">Home</a> 
-                        {% elif requst.user.us_student %}
+                        {% elif requst.user.is_student %}
                             <a class="nav-item nav-link" href="{%url 'student-home'%}">Home</a> 
                         {% else %}
                             <a class="nav-item nav-link" href="{%url 'dashboard-home'%}">Home</a>

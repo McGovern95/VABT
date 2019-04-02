@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import get_user
+from django.contrib import messages
 from django.contrib.auth.models import User
 from users.models import Profile
 from users.models import UserExtended 
@@ -14,6 +15,7 @@ from django.views.generic import (
         )
 from .models import Post
 from .models import User
+from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 #from django.http import HttpResponse
 #Create your views here.
 
@@ -39,8 +41,23 @@ def home(request):
     context = {
         'users': User.objects.all() #users
         }
+
+    ##displays the students page
     if (request.user.is_authenticated and request.user.is_staff == False):
-        return render(request, 'dashboard/student_home.html', context)
+         if request.method=='POST':
+            cert_form = CertForm(request.POST, request.FILES, instance=request.user.userextended)
+            if cert_form.is_valid():
+                cert_form.save()
+                messages.success(request, f'Your file has been uploaded!')
+                return  redirect('dashboard-home')
+            else:
+                cert_form = CertForm(instance=request.user.userextended)
+
+            context = {
+            'cert_form': cert_form,
+            }
+        
+         return render(request, 'dashboard/student_home.html', context)
     else:
         return render(request, 'dashboard/home.html', context)
 
@@ -92,22 +109,11 @@ def about(request):
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):                                                   
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
-
+#CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
+#@user_passes_test(lambda u: u.is_student)
 def student_home(request):  
-
-    ##s0 some form close depending on their  chapter type? 
-
-    #fields = UserExtended.objects.get(user=request.user) #takes the extended fields
-    
-    #if request.method == 'POST':
-    #    form = DocumentForm(request.POST, render.FILES)
-    #    if form.is_valid():
-    #        form.save()
-    #        return redirect('home')
-    #else:
-    #    form = DocumentForm()
-  
-    return render(request, 'dashboard/student_home.html',{'title':'Home'})
+   
+    return render(request, 'dashboard/student_home.html', context)
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
