@@ -19,47 +19,32 @@ from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStu
 #from django.http import HttpResponse
 #Create your views here.
 
-#this is now within models
-
-#posts = [
-        
-#        {
-#            'author':'Ian Navarro',
-#            'title': 'dashboard Post 1',
-#            'content': 'First post!',
-#            'date_posted': 'March 5th, 2019'
-#            },
-#            {
-#            'author':'Kyla Navarro',
-#            'title': 'dashboard Post 2',
-#            'content': '2nd post!',
-#            'date_posted': 'March 6th, 2019'
-#            }
-#    ]
-
+#CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 def home(request):
-    context = {
-        'users': User.objects.all() #users
-        }
+    #context = {
+    #    'users': User.objects.all() #users
+    #    }
 
     ##displays the students page
-    if (request.user.is_authenticated and request.user.is_staff == False):
+    if (request.user.is_authenticated and request.user.userextended.is_student):
+
          if request.method=='POST':
             cert_form = CertForm(request.POST, request.FILES, instance=request.user.userextended)
             if cert_form.is_valid():
                 cert_form.save()
                 messages.success(request, f'Your file has been uploaded!')
-                return  redirect('dashboard-home')
+                #return redirect('dashboard-home')
             else:
                 cert_form = CertForm(instance=request.user.userextended)
 
             context = {
             'cert_form': cert_form,
             }
+            return render(request, 'dashboard/student_home.html', context)
         
-         return render(request, 'dashboard/student_home.html', context)
+         return render(request, 'dashboard/student_home.html')
     else:
-        return render(request, 'dashboard/home.html', context)
+        return render(request, 'dashboard/home.html')
 
 class PostListView(ListView):
     model = User
@@ -109,11 +94,6 @@ def about(request):
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):                                                   
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
-#CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
-#@user_passes_test(lambda u: u.is_student)
-def student_home(request):  
-   
-    return render(request, 'dashboard/student_home.html', context)
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})

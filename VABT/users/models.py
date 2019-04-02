@@ -20,32 +20,22 @@ class UserExtended(models.Model):
 
     #saves file to a userid directory
     def user_directory_path(instance, filename):
-        return 'students/user_{0}/{1}'.format(instance.user.id,filename)
+        return 'students/{0}_{1}/{2}'.format(instance.user.last_name,instance.user.first_name,filename)
 
     ###all files for first time peeps
     cert_of_elig = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null=True)
     MVP_info_sheet = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     stud_respon = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     resid_tuit_app = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
-    #everyone else ususally 
+    #everyone else usually
     conc_stud_sched = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     star_deg_audit = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
 
-    #for printing and checking
-    #def __str__(self):
-    #    return '%s %s %s' % (self.chapter, self.is_firsttime, self.is_student)
-
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username} Extended Student Fields'
 
-    @receiver(post_save, sender=User)
-    def update_user_extension(sender, instance, created, **kwargs):
-        if created:
-            UserExtended.objects.create(user=instance)
-            instance.userextension.save()
-
-    def save(self, *args,**kwargs):
-        super(UserExtended,self).save(*args,**kwargs)
+    #def save(self, *args,**kwargs):
+    #    super(UserExtended,self).save(*args,**kwargs)
 
 
 class Profile(models.Model): #one to one
