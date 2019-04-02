@@ -15,7 +15,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ cert_form|crispy}}
+                {{ cert_form.as_p}}
                 <button type="submit">Upload</button>
                 </form>
             </td>

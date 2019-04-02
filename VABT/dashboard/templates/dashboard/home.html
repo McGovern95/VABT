@@ -1,7 +1,9 @@
 {%extends "dashboard/base.html" %}
 {% block content %}
     {% if user.is_staff %}	
-        <meta http-equiv="Refresh" content="0; url=certifier_home">
+        <meta http-equiv="Refresh" content="0; url={%url 'certifier-home'%}">
+    {% elif user.userextended.is_student %}
+        <meta http-equiv="Refresh" content="0; url={%url 'student-home'%}"> 
     {% else %}
         <div class="jumbotron">
         <h1>Veteran Affairs Benefit Tracker</h1>

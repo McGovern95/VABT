@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from users.models import Profile
 from users.models import UserExtended 
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
         ListView,
@@ -21,29 +22,6 @@ from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStu
 
 #CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 def home(request):
-    #context = {
-    #    'users': User.objects.all() #users
-    #    }
-
-    ##displays the students page
-    if (request.user.is_authenticated and request.user.userextended.is_student):
-
-         if request.method=='POST':
-            cert_form = CertForm(request.POST, request.FILES, instance=request.user.userextended)
-            if cert_form.is_valid():
-                cert_form.save()
-                messages.success(request, f'Your file has been uploaded!')
-                #return redirect('dashboard-home')
-            else:
-                cert_form = CertForm(instance=request.user.userextended)
-
-            context = {
-            'cert_form': cert_form,
-            }
-            return render(request, 'dashboard/student_home.html', context)
-        
-         return render(request, 'dashboard/student_home.html')
-    else:
         return render(request, 'dashboard/home.html')
 
 class PostListView(ListView):
@@ -94,6 +72,32 @@ def about(request):
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):                                                   
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
+#CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
+@login_required
+def student_home(request):
+    if request.method=='POST':
+        cert_form = CertForm(request.POST, request.FILES, instance=request.user.userextended)
+        mvp_form = MVPForm(request.POST, request.FILES, instance=request.user.userextended)
+        stud_form = StudResponForm(request.POST, request.FILES, instance=request.user.userextended)
+        resid_form = ResidTuitAppForm(request.POST, request.FILES, instance=request.user.userextended)
+        conc_form = ConcStudSchedForm(request.POST, request.FILES, instance=request.user.userextended)
+        star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
+        if cert_form.is_valid():
+           cert_form.save()
+           messages.success(request, f'Your account has been updated!')
+           return redirect('student-home')
+    else:
+        cert_form = CertForm(instance=request.user.userextended)
+
+
+    context = {
+            'cert_form': cert_form
+    }
+
+
+    return render(request, 'dashboard/student_home.html',context)
+
+
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
