@@ -34,8 +34,8 @@ class UserExtended(models.Model):
     def __str__(self):
         return f'{self.user.username} Extended Student Fields'
 
-    #def save(self, *args,**kwargs):
-    #    super(UserExtended,self).save(*args,**kwargs)
+    def save(self, *args,**kwargs):
+        super(UserExtended,self).save(*args,**kwargs)
 
 
 class Profile(models.Model): #one to one
