@@ -84,14 +84,49 @@ def student_home(request):
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
         if cert_form.is_valid():
            cert_form.save()
-           messages.success(request, f'Your account has been updated!')
-           return redirect('student-home')
+           #mvp_form.save()
+           #stud_form.save()
+           #resid_form.save()
+           #conc_form.save()
+           #star_form.save()
+           messages.success(request, f'Your File has Been Uploaded!')
+           
+        if mvp_form.is_valid():
+            mvp_form.save()
+            messages.success(request, f'Your File has Been Uploaded!')
+            
+        if stud_form.is_valid():
+            stud_form.save()
+            messages.success(request, f'Your File has Been Uploaded!')
+            
+        if resid_form.is_valid():
+            resid_form.save()
+            messages.success(request, f'Your File has Been Uploaded!')
+            
+        if conc_form.is_valid():
+            conc_form.save()
+            messages.success(request, f'Your File has Been Uploaded!')
+            
+        if star_form.is_valid():
+            star_form.save()
+            messages.success(request, f'Your File has Been Uploaded!')
+            
+
     else:
         cert_form = CertForm(instance=request.user.userextended)
-
+        mvp_form = MVPForm(instance=request.user.userextended)
+        stud_form = StudResponForm(instance=request.user.userextended)
+        resid_form = ResidTuitAppForm(instance=request.user.userextended)
+        conc_form = ConcStudSchedForm(instance=request.user.userextended)
+        star_form = StarDegAuditForm(instance=request.user.userextended)
 
     context = {
-            'cert_form': cert_form
+            'cert_form': cert_form,
+            'mvp_form' : mvp_form,
+            'stud_form' : stud_form,
+            'resid_form' : resid_form,
+            'conc_form' : conc_form,
+            'star_form' : star_form
     }
 
 
