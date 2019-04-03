@@ -17,7 +17,6 @@
             <td>
                 {% csrf_token %}
                 {{ cert_form.as_p}}
-                
             </td>
           </tr>
           <tr>
@@ -71,9 +70,7 @@
             <td>NO</td> 
             <td>
                 {% csrf_token %}
-                {{ conc_form.as_p }}
-                <button type="submit">Upload</button>
-               
+                {{ conc_form.as_p }}          
             </td>
           </tr>
           <tr>
