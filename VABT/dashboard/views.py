@@ -55,33 +55,28 @@ def student_home(request):
         conc_form = ConcStudSchedForm(request.POST, request.FILES, instance=request.user.userextended)
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
         if cert_form.is_valid():
-           #cert_form.save()
-           #mvp_form.save()
-           #stud_form.save()
-           #resid_form.save()
-           #conc_form.save()
-           #star_form.save()
-           messages.success(request, f'Your Certification Form has been uploaded!')
+           cert_form.save()
+           messages.success(request, f'Your Certificate of Eligibility has been uploaded!')
            
         if mvp_form.is_valid():
             mvp_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your MVP Information Sheet has been uploaded!')
             
         if stud_form.is_valid():
             stud_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your Student Responsibilites Form has been uploaded!')
             
         if resid_form.is_valid():
             resid_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your Resident Tuition Application has been uploaded!')
             
         if conc_form.is_valid():
             conc_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your Concise Student Schedule has been uploaded!')
             
         if star_form.is_valid():
             star_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your STAR Degree Audit has been uploaded!')
             
 
     else:
