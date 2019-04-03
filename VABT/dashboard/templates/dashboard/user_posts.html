@@ -1,13 +1,13 @@
 ﻿{%extends "dashboard/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
-    
+    <h1>User:</h1>
+    <a> {{ user.last_name }} </a>
     {% if user.userextended.is_firsttime %}
           <table style="width:100%">
           <caption></caption>
           <tr>
             <th>First Visit Files</th>
-            <th>Approved?</th> 
+            <th>Checklist</th> 
             <th>Upload</th>
           </tr>
           <tr>
@@ -15,7 +15,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ cert_form.as_p}}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -25,7 +25,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ mvp_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -35,7 +35,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ stud_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -45,7 +45,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ resid_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -65,7 +65,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ conc_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -75,7 +75,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ star_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -94,7 +94,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ conc_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -104,7 +104,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ star_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -123,7 +123,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ conc_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -133,7 +133,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ star_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -152,7 +152,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ conc_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -162,7 +162,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ star_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -181,7 +181,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ conc_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
@@ -191,7 +191,7 @@
             <td>NO</td> 
             <td><form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ star_form.as_p }}
+                {{ form.as_p }}
                 <button type="submit">Upload</button>
                 </form>
             </td>
