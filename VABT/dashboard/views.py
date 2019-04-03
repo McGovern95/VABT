@@ -54,13 +54,13 @@ def student_home(request):
         conc_form = ConcStudSchedForm(request.POST, request.FILES, instance=request.user.userextended)
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
         if cert_form.is_valid():
-           cert_form.save()
-           mvp_form.save()
-           stud_form.save()
-           resid_form.save()
-           conc_form.save()
-           star_form.save()
-           messages.success(request, f'Your File has Been Uploaded!')
+           #cert_form.save()
+           #mvp_form.save()
+           #stud_form.save()
+           #resid_form.save()
+           #conc_form.save()
+           #star_form.save()
+           messages.success(request, f'Your Certification Form has been uploaded!')
            
         if mvp_form.is_valid():
             mvp_form.save()
