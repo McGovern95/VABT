@@ -1,7 +1,6 @@
 ﻿{%extends "dashboard/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
-    
+ 
     {% if user.userextended.is_firsttime %}
         <form method="post" enctype="multipart/form-data">
           <table style="width:100%">
@@ -25,7 +24,6 @@
             <td>
                 {% csrf_token %}
                 {{ mvp_form.as_p }}
-               
             </td>
           </tr>
           <tr>
@@ -39,8 +37,7 @@
             <td>NO</td> 
             <td>
                 {% csrf_token %}
-                {{ stud_form.as_p }}
-             
+                {{ stud_form.as_p }} 
             </td>
           </tr>
               <tr>
@@ -48,12 +45,11 @@
             <td>NO</td> 
             <td>
                 {% csrf_token %}
-                {{ resid_form.as_p }}
-              
+                {{ resid_form.as_p }}          
             </td>
           </tr>
         </table>
-      <button type="submit">Upload Files</button>  
+      <button type="submit">Upload First Time Files</button>  
     </form>
     {% endif %}
     {% if user.userextended.chapter == '33' %}
@@ -78,12 +74,11 @@
             <td>NO</td> 
             <td>
                 {% csrf_token %}
-                {{ star_form.as_p }}
-              
+                {{ star_form.as_p }}  
             </td>
           </tr>
         </table>
-       <button type="submit">Upload Files</button>
+       <button type="submit">Upload 33 Files</button>
           </form>
     {% elif user.userextended.chapter == '31' %}
 <form method="post" enctype="multipart/form-data">
