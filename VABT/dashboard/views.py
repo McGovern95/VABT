@@ -102,10 +102,10 @@ def student_home(request):
     }
     if(request.GET.get('mybtn')):
         email = EmailMessage(
-        'subject_message',
-        'The user has sent you thier documents',
-        'sender smtp gmail' +'<sender@gmail.com>',
-        ['rosencrans24@gmail.com'],
+        'VABT Notification',
+        'The user has sent you their documents',
+        'VABT Notifications' +'<sender@gmail.com>',
+        [request.user.email],
         headers = {'Reply-To': 'contact_email@gmail.com' }
         )
         email.send()
