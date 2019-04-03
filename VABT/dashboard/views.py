@@ -32,7 +32,7 @@ class PostListView(ListView):
   
 class UserPostListView(ListView):
     model = User
-    template_name = 'dashboard/certifier_home.html'
+    template_name = 'dashboard/user_posts.html'
     context_object_name = 'users'
     def get_query_set(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
