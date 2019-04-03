@@ -84,11 +84,11 @@ def student_home(request):
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
         if cert_form.is_valid():
            cert_form.save()
-           #mvp_form.save()
-           #stud_form.save()
-           #resid_form.save()
-           #conc_form.save()
-           #star_form.save()
+           mvp_form.save()
+           stud_form.save()
+           resid_form.save()
+           conc_form.save()
+           star_form.save()
            messages.success(request, f'Your File has Been Uploaded!')
            
         if mvp_form.is_valid():
