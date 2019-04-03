@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user
 from django.contrib.auth.models import User
 from users.models import Profile
@@ -46,45 +46,21 @@ def home(request):
 
 class PostListView(ListView):
     model = User
-
     template_name = 'dashboard/certifier_home.html'
-
     context_object_name = 'users'
-   #ordering  = ['-date_posted']
+    #paginate_by = 10
+    #ordering  = ['user']
 
-class PostDetailView(DetailView):
+class UserPostListView(ListView):
     model = User
-    
-class PostCreateView(LoginRequiredMixin ,CreateView):
-    model = User
-    fields = ['username', 'content']
+    template_name = 'dashboard/user_posts.html'
+    context_object_name = 'users'
+    #paginate_by = 10
+    #ordering  = ['user']
+    def get_query_set(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user.is_staff
-        return super().form_valid(form)
-
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
-    model = Post
-    fields = ['username', 'content']
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user.is_staff
-        return super().form_valid(form)
-
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == user.username.is_staff:
-            return True
-        return False
-
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
-    model = Post
-    success_url = '/'
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == user.username.is_staff:
-            return True
-        return False
+   
 
 def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})

@@ -1,30 +1,112 @@
 ﻿{%extends "dashboard/base.html" %}
 {% block content %}
 
-    {% for user in users %}
-        {% if user.is_staff == False %}
-        <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="">{{ user.username }}</a>
-                </div>
-            </div>
-        </article>
-        {% endif %}
-    {% endfor %}
-    
-{% for post in posts %}
-<article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" />
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y T g:i" }}</small>
+<div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="#chapter33" role="tab" data-toggle="tab">Chapter 33</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="#chapter30" role="tab" data-toggle="tab">Chapter 30</a>
+      </li> <li class="nav-item">
+        <a class="nav-link" href="#chapter31" role="tab" data-toggle="tab">Chapter 31</a>
+      </li> <li class="nav-item">
+        <a class="nav-link" href="#chapter35" role="tab" data-toggle="tab">Chapter 35</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="#chapter16" role="tab" data-toggle="tab">Chapter 1606</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div role"tabpanel" class="tab-pane active" id="chapter33">
+            {% for user in users %}
+                {% if user.is_staff == False and user.userextended.chapter == '33' %}
+                <article class="media content-section">
+                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="{% url 'user-posts'  user.last_name %}">{{ user.last_name }},</a>
+                            <a class="mr-0" href="">{{ user.first_name }}</a>
+                        </div>
+                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                    </div>
+                </article>
+                {% endif %}
+            {% endfor %} 
         </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+
+        <div role"tabpanel" class="tab-pane" id="chapter30">
+            {% for user in users %}
+                {% if user.is_staff == False and user.userextended.chapter == '30' %}
+                <article class="media content-section">
+                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="">{{ user.last_name }},</a>
+                            <a class="mr-0" href="">{{ user.first_name }}</a>
+                        </div>
+                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                    </div>
+                </article>
+                {% endif %}
+            {% endfor %} 
+
+        </div>
+
+        <div role"tabpanel" class="tab-pane" id="chapter31">
+            {% for user in users %}
+                {% if user.is_staff == False and user.userextended.chapter == '31' %}
+                <article class="media content-section">
+                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="">{{ user.last_name }},</a>
+                            <a class="mr-0" href="">{{ user.first_name }}</a>
+                        </div>
+                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                    </div>
+                </article>
+                {% endif %}
+            {% endfor %} 
+        </div>
+
+        <div role"tabpanel" class="tab-pane" id="chapter35">
+            {% for user in users %}
+                {% if user.is_staff == False and user.userextended.chapter == '35' %}
+                <article class="media content-section">
+                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="#">{{ user.last_name }},</a>
+                            <a class="mr-0" href="#">{{ user.first_name }}</a>
+                        </div>
+                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                    </div>
+                </article>
+                {% endif %}
+            {% endfor %} 
+        </div>
+        <div role"tabpanel" class="tab-pane" id="chapter16">
+            {% for user in users %}
+                {% if user.is_staff == False and user.userextended.chapter == '1606' %}
+                <article class="media content-section">
+                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="">{{ user.last_name }},</a>
+                            <a class="mr-0" href="">{{ user.first_name }}</a>
+                        </div>
+                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                    </div>
+                </article>
+                {% endif %}
+            {% endfor %} 
+        </div>
     </div>
-</article>
-    {% endfor %}
+</div>
+
+   
+
 {% endblock content %}

@@ -1,6 +1,7 @@
 ﻿{%extends "dashboard/base.html" %}
 {% block content %}
-    
+    <h1>User:</h1>
+    <a> {{ user.last_name }} </a>
     {% if user.userextended.is_firsttime %}
           <table style="width:100%">
           <caption></caption>
