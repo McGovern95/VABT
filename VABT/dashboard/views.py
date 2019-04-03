@@ -100,6 +100,7 @@ def student_home(request):
             'conc_form' : conc_form,
             'star_form' : star_form
     }
+# sending notifications to certifier using built in django email function    
     if(request.GET.get('mybtn')):
         email = EmailMessage(
         'VABT Notification',
@@ -127,7 +128,7 @@ def contact(request):
 #    headers = {'Reply-To': 'contact_email@gmail.com' }
 #    )
 #    email.send()
-
+#    messages.success(request, f'Your Message Has Been Sent')
 
 
 #checklist stuff here: https://mvp.nmsu.edu/veterans-and-dependents/student-certification-checklists/
