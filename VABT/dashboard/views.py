@@ -17,6 +17,7 @@ from django.views.generic import (
 from .models import Post
 from .models import User
 from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
+from django.core.mail import EmailMessage
 #from django.http import HttpResponse
 #Create your views here.
 
@@ -41,7 +42,7 @@ def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
 
 @user_passes_test(lambda u: u.is_staff)
-def certifier_home(request):                                                   
+def certifier_home(request):
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
 #CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 @login_required
@@ -99,14 +100,35 @@ def student_home(request):
             'conc_form' : conc_form,
             'star_form' : star_form
     }
-
-
+    if(request.GET.get('mybtn')):
+        email = EmailMessage(
+        'subject_message',
+        'The user has sent you thier documents',
+        'sender smtp gmail' +'<sender@gmail.com>',
+        ['rosencrans24@gmail.com'],
+        headers = {'Reply-To': 'contact_email@gmail.com' }
+        )
+        email.send()
+        messages.success(request, f'Your Message Has Been Sent')
     return render(request, 'dashboard/student_home.html',context)
 
 
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
+
+#def Sendmail(request):
+#   if(request.GET.get('mybtn')):
+#    email = EmailMessage(
+#    'subject_message',
+#    'content_message',
+#    'sender smtp gmail' +'<sender@gmail.com>',
+#    ['user.email'],
+#    headers = {'Reply-To': 'contact_email@gmail.com' }
+#    )
+#    email.send()
+
+
 
 #checklist stuff here: https://mvp.nmsu.edu/veterans-and-dependents/student-certification-checklists/
 #helpful repo im sure: https://github.com/sibtc/simple-file-upload ~ https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
