@@ -120,6 +120,7 @@ def student_home(request):
 
     return render(request, 'dashboard/student_home.html',context)
 
+#CHRISTIAN DONT DELETE THIS
 #Alltel: phonenumber@message.alltel.com
 #AT&T: phonenumber@txt.att.net
 #T-Mobile: phonenumber@tmomail.net
