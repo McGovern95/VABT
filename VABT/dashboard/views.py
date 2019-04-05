@@ -17,6 +17,7 @@ from django.views.generic import (
 from .models import Post
 from .models import User
 from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
+from django.core.mail import EmailMessage
 #from django.http import HttpResponse
 #Create your views here.
 
@@ -41,7 +42,7 @@ def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
 
 @user_passes_test(lambda u: u.is_staff)
-def certifier_home(request):                                                   
+def certifier_home(request):
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
 #CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 @login_required
@@ -55,32 +56,27 @@ def student_home(request):
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
         if cert_form.is_valid():
            cert_form.save()
-           mvp_form.save()
-           stud_form.save()
-           resid_form.save()
-           conc_form.save()
-           star_form.save()
-           messages.success(request, f'Your File has Been Uploaded!')
+           messages.success(request, f'Your Certificate of Eligibility has been uploaded!')
            
         if mvp_form.is_valid():
             mvp_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your MVP Information Sheet has been uploaded!')
             
         if stud_form.is_valid():
             stud_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your Student Responsibilites Form has been uploaded!')
             
         if resid_form.is_valid():
             resid_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your Resident Tuition Application has been uploaded!')
             
         if conc_form.is_valid():
             conc_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your Concise Student Schedule has been uploaded!')
             
         if star_form.is_valid():
             star_form.save()
-            messages.success(request, f'Your File has Been Uploaded!')
+            messages.success(request, f'Your STAR Degree Audit has been uploaded!')
             
 
     else:
@@ -99,14 +95,36 @@ def student_home(request):
             'conc_form' : conc_form,
             'star_form' : star_form
     }
-
-
+# sending notifications to certifier using built in django email function    
+    if(request.GET.get('mybtn')):
+        email = EmailMessage(
+        'VABT Notification',
+        'The user has sent you their documents',
+        'VABT Notifications' +'<sender@gmail.com>',
+        [request.user.email],
+        headers = {'Reply-To': 'contact_email@gmail.com' }
+        )
+        email.send()
+        messages.success(request, f'Your Message Has Been Sent')
     return render(request, 'dashboard/student_home.html',context)
 
 
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
+
+#def Sendmail(request):
+#   if(request.GET.get('mybtn')):
+#    email = EmailMessage(
+#    'subject_message',
+#    'content_message',
+#    'sender smtp gmail' +'<sender@gmail.com>',
+#    ['user.email'],
+#    headers = {'Reply-To': 'contact_email@gmail.com' }
+#    )
+#    email.send()
+#    messages.success(request, f'Your Message Has Been Sent')
+
 
 #checklist stuff here: https://mvp.nmsu.edu/veterans-and-dependents/student-certification-checklists/
 #helpful repo im sure: https://github.com/sibtc/simple-file-upload ~ https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
