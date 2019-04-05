@@ -37,6 +37,19 @@ class UserPostListView(ListView):
     context_object_name = 'users'
     def get_query_set(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
+    #this dont work. fix it ian!
+    def email(request):
+        if(request.GET.get('certbtn')):
+            email = EmailMessage(
+            'VABT Notification',
+            'The user has sent you their documents',
+            'VABT Notifications' +'<sender@gmail.com>',
+            [request.user.email],
+            headers = {'Reply-To': 'contact_email@gmail.com' }
+            )
+            email.send()
+            messages.success(request, f'Your Message Has Been Sent to Student')
+       
 
 def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
@@ -44,7 +57,7 @@ def about(request):
 @user_passes_test(lambda u: u.is_staff)
 def certifier_home(request):
     return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
-#CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
+
 @login_required
 def student_home(request):
     if request.method=='POST':
@@ -58,27 +71,25 @@ def student_home(request):
            cert_form.save()
            messages.success(request, f'Your Certificate of Eligibility has been uploaded!')
            
-        if mvp_form.is_valid():
+        elif mvp_form.is_valid():
             mvp_form.save()
             messages.success(request, f'Your MVP Information Sheet has been uploaded!')
             
-        if stud_form.is_valid():
+        elif stud_form.is_valid():
             stud_form.save()
             messages.success(request, f'Your Student Responsibilites Form has been uploaded!')
             
-        if resid_form.is_valid():
+        elif resid_form.is_valid():
             resid_form.save()
             messages.success(request, f'Your Resident Tuition Application has been uploaded!')
             
-        if conc_form.is_valid():
+        elif conc_form.is_valid():
             conc_form.save()
             messages.success(request, f'Your Concise Student Schedule has been uploaded!')
             
-        if star_form.is_valid():
+        elif star_form.is_valid():
             star_form.save()
             messages.success(request, f'Your STAR Degree Audit has been uploaded!')
-            
-
     else:
         cert_form = CertForm(instance=request.user.userextended)
         mvp_form = MVPForm(instance=request.user.userextended)
@@ -106,6 +117,7 @@ def student_home(request):
         )
         email.send()
         messages.success(request, f'Your Message Has Been Sent')
+
     return render(request, 'dashboard/student_home.html',context)
 
 

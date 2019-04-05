@@ -27,12 +27,12 @@
             </td>
           </tr>
           <tr>
-            <td>{%if user.userextended.chapter == '30' or user.userextended.chapter == '1606' or user.userextended.chapter == '35' %}
-                     <a href="https://mvp.nmsu.edu/files/2018/06/Ch_30_1606_1607_35_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td>
+                {%if user.userextended.chapter == '30' or user.userextended.chapter == '1606' or user.userextended.chapter == '35' %}
+                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_30_1606_1607_35_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td>
                 {% elif user.userextended.chapter == '31' %} 
-                     <a href="https://mvp.nmsu.edu/files/2018/06/Ch_31_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
+                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_31_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%else%} 
-                     <a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
+                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%endif%}     
             <td>NO</td> 
             <td>
@@ -49,7 +49,9 @@
             </td>
           </tr>
         </table>
-      <button type="submit">Upload First Time Files</button>  
+      <div style="text-align:right">
+            <button class="btn btn-outline-info" type="submit">Upload First Visit Files</button>  
+      </div>
       </form>
     {% endif %}
     {% if user.userextended.chapter == '33' %}
@@ -78,7 +80,9 @@
             </td>
           </tr>
         </table>
-       <button type="submit">Upload Chpater 33 Files</button>
+       <div style="text-align:right">
+            <button class="btn btn-outline-info" type="submit">Upload Chapter 33 Files</button>
+       </div>
        </form>
     {% elif user.userextended.chapter == '31' %}
        <form method="post" enctype="multipart/form-data">
@@ -106,7 +110,9 @@
             </td>
           </tr>
         </table>
-        <button type="submit">Upload Chapter 31 Files</button>
+        <div style="text-align:right">
+            <button class="btn btn-outline-info" type="submit">Upload Chapter 31 Files</button>
+        </div>
         </form>
     {% elif user.userextended.chapter == '30' %}
        <form method="post" enctype="multipart/form-data">
@@ -135,7 +141,9 @@
             </td>
           </tr>
         </table>
-        <button type="submit">Upload Chapter 30 Files</button>
+        <div style="text-align:right">
+            <button class="btn btn-outline-info" type="submit">Upload Chapter 30 Files</button>
+        </div>
         </form>
     {% elif user.userextended.chapter == '35' %}
        <form method="post" enctype="multipart/form-data">
@@ -163,8 +171,10 @@
             </td>
           </tr>
         </table>
-        <button type="submit">Upload Chpater 35 Files</button>
-        </form>
+        <div style="text-align:right">
+            <button class="btn btn-outline-info" type="submit">Upload Chpater 35 Files</button>
+        </div> 
+       </form>
     {% elif user.userextended.chapter == '1606' %}
        <form method="post" enctype="multipart/form-data">
        <table style="width:100%">
@@ -191,10 +201,12 @@
             </td>
           </tr>
         </table>
-             <button type="submit">Upload Chapter 1606 Files</button>
+        <div style="text-align:right">
+             <button class="btn btn-outline-info" type="submit">Upload Chapter 1606 Files</button>
+        </div>
         </form>
     {% endif %}
-<form action="#" method="get">
-    <input type="submit" class="btn" value="Notify Certifier" name="mybtn">
-</form>
+    <form action="#" method="get">
+        <input type="submit" class="btn" value="Notify Certifier" name="mybtn">
+    </form>
 {% endblock content %}
