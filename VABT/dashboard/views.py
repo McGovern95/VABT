@@ -67,27 +67,27 @@ def student_home(request):
         resid_form = ResidTuitAppForm(request.POST, request.FILES, instance=request.user.userextended)
         conc_form = ConcStudSchedForm(request.POST, request.FILES, instance=request.user.userextended)
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
-        if cert_form.is_valid():
+        if cert_form.is_valid() == True:
            cert_form.save()
            messages.success(request, f'Your Certificate of Eligibility has been uploaded!')
            
-        if mvp_form.is_valid():
+        if mvp_form.is_valid() == True:
             mvp_form.save()
             messages.success(request, f'Your MVP Information Sheet has been uploaded!')
             
-        if stud_form.is_valid():
+        if stud_form.is_valid() == True:
             stud_form.save()
             messages.success(request, f'Your Student Responsibilites Form has been uploaded!')
             
-        if resid_form.is_valid():
+        if resid_form.is_valid() == True:
             resid_form.save()
             messages.success(request, f'Your Resident Tuition Application has been uploaded!')
             
-        if conc_form.is_valid():
+        if conc_form.is_valid() == True:
             conc_form.save()
             messages.success(request, f'Your Concise Student Schedule has been uploaded!')
             
-        if star_form.is_valid():
+        if star_form.is_valid() == True:
             star_form.save()
             messages.success(request, f'Your STAR Degree Audit has been uploaded!')
     else:
@@ -120,6 +120,14 @@ def student_home(request):
 
     return render(request, 'dashboard/student_home.html',context)
 
+#Alltel: phonenumber@message.alltel.com
+#AT&T: phonenumber@txt.att.net
+#T-Mobile: phonenumber@tmomail.net
+#Virgin Mobile: phonenumber@vmobl.com
+#Sprint: phonenumber@messaging.sprintpcs.com
+#Verizon: phonenumber@vtext.com
+#Nextel: phonenumber@messaging.nextel.com
+#US Cellular: phonenumber@mms.uscc.net
 
 
 def contact(request):
