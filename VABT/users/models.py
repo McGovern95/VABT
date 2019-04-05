@@ -17,6 +17,13 @@ class UserExtended(models.Model):
     chapter = models.CharField(max_length=4,choices=[('33','33'), ('30','30'), ('31','31'),('35','35'),('1606','1606')],blank=True)
     is_firsttime = models.BooleanField(default=True)
     is_student = models.BooleanField(default=True)
+    ##Checklist data
+    #Certificate_of_eligibility = models.BooleanField(default=False)
+    #MVP_information_sheet = models.BooleanField(default=False)
+    #Student_responsibility = models.BooleanField(default=False)
+    #Resident_tuition_app = models.BooleanField(default=False)
+    #Concise_student_schedule = models.BooleanField(default=False)
+    #Star_degree_audit = models.BooleanField(default=False)
 
     #saves file to a userid directory
     def user_directory_path(instance, filename):

@@ -18,6 +18,20 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail',kwargs={'pk':self.pk})
 
+class chapter(models.Model):
+    form_coe = models.BooleanField(default=False)
+    form_info = models.BooleanField(default=False)
+    form_resp = models.BooleanField(default=False)
+    form_resident = models.BooleanField(default=False)
+    form_concise = models.BooleanField(default=False)
+    form_starda = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if self.is_published:
+            self.draft = False
+        if self.draft:
+            self.published = False
+        super().save(*args, **kwargs)
 
 
         
