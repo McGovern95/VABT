@@ -1,7 +1,57 @@
-﻿{%extends "dashboard/base.html" %}
+﻿
+{%extends "dashboard/base.html" %}
 {% block content %}
-    <h1>User:</h1>
-    <a> {{ user.last_name }} </a>
+    <h1>User: {{ view.kwargs.username}} </h>
+        <table style="width:100%">
+        <caption></caption>
+        <tr>
+        <th>First Visit Files</th>
+        <th>Checklist</th> 
+        <th>Upload</th>
+        </tr>
+        <tr>
+        <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
+        <td>NO</td> 
+        <td><form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+            </form>
+        </td>
+        </tr>
+        <tr>
+        <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
+        <td>NO</td> 
+        <td><form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+            </form>
+        </td>
+        </tr>
+        <tr>
+        <td>NMSU MVP Student Responsibilities Form</td>
+        <td>NO</td> 
+        <td><form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+            </form>
+        </td>
+        </tr>
+            <tr>
+        <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
+        <td>NO</td> 
+        <td><form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+            </form>
+        </td>
+        </tr>
+    </table>
+
+
 
     <form action="#" method="get">
         <input type="submit" class="btn" value="Notify Student" name="certbtn">
