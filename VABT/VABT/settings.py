@@ -130,9 +130,3 @@ CRISPY_TEMPLATE_PACK= 'bootstrap4' #style
 LOGIN_REDIRECT_URL = 'dashboard-home' #after log in
 LOGIN_URL ='login' #login pattern after accessing profile without username/password
 
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'vabtapplication@gmail.com'
-EMAIL_HOST_PASSWORD = 'Vabt@123$'
-EMAIL_PORT = 587
