@@ -1,13 +1,12 @@
-﻿
-{%extends "dashboard/base.html" %}
+﻿{%extends "dashboard/base.html" %}
 {% block content %}
-    <h1>User: {{ view.kwargs.username}} </h>
+    <h1>User: {{ view.kwargs.username}} </h1>
         <table style="width:100%">
         <caption></caption>
         <tr>
-        <th>First Visit Files</th>
+        <th>Forms</th>
         <th>Checklist</th> 
-        <th>Upload</th>
+        <th>Certify</th>
         </tr>
         <tr>
         <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
@@ -15,7 +14,10 @@
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Upload</button>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
             </form>
         </td>
         </tr>
@@ -25,8 +27,11 @@
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Upload</button>
-            </form>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            </form> 
         </td>
         </tr>
         <tr>
@@ -35,7 +40,10 @@
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Upload</button>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
             </form>
         </td>
         </tr>
@@ -45,7 +53,10 @@
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Upload</button>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
             </form>
         </td>
         </tr>
