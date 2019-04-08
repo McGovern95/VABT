@@ -37,7 +37,6 @@ class UserPostListView(ListView):
     context_object_name = 'users'
     def get_query_set(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-
     #need to get the kwarg stuff for the email
     def get(self, request, *args, **kwargs):
         if(request.GET.get('certbtn')):
