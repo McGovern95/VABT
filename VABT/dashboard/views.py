@@ -37,18 +37,22 @@ class UserPostListView(ListView):
     context_object_name = 'users'
     def get_query_set(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-    #this dont work. fix it ian!
-    def email(request):
+
+    #need to get the kwarg stuff for the email
+    def get(self, request, *args, **kwargs):
         if(request.GET.get('certbtn')):
             email = EmailMessage(
             'VABT Notification',
-            'The user has sent you their documents',
+            'The certifier has sent you a notification!',
             'VABT Notifications' +'<sender@gmail.com>',
-            [request.user.email],
+            #what goes here?
+            ['mcgovernchristian@gmail.com'],
             headers = {'Reply-To': 'contact_email@gmail.com' }
             )
             email.send()
-            messages.success(request, f'Your Message Has Been Sent to Student')
+                                                                         #obviously this needs change
+            messages.success(request, f'Your Message Has Been Sent to '+ request.user.first_name) 
+        return super(UserPostListView, self).get(request, *args, **kwargs)
        
 
 def about(request):
