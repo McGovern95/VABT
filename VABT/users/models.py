@@ -4,6 +4,7 @@ from PIL import Image
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.validators import FileExtensionValidator
+from django.core.validators import RegexValidator
 # Create your models here.
 #extended default User model
 #usage: make sure you import from users.models import UserExtended 
@@ -17,6 +18,10 @@ class UserExtended(models.Model):
     chapter = models.CharField(max_length=4,choices=[('33','33'), ('30','30'), ('31','31'),('35','35'),('1606','1606')],blank=True)
     is_firsttime = models.BooleanField(default=True)
     is_student = models.BooleanField(default=True)
+    #regular expression validator for phone numbers
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
+    carrier = models.CharField(max_length=15,choices=[('AT&T','AT&T'),('Verizon','Verizon'),('Sprint','Sprint'),('T-Mobile','T-Mobile'),('Virgin', 'Virgin')], blank=True)
     ##Checklist data
     #Certificate_of_eligibility = models.BooleanField(default=False)
     #MVP_information_sheet = models.BooleanField(default=False)
@@ -30,7 +35,7 @@ class UserExtended(models.Model):
         return 'students/{0}_{1}/{2}'.format(instance.user.last_name,instance.user.first_name,filename)
 
     ###all files for first time peeps
-    cert_of_elig = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null=True)
+    cert_of_elig = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=["pdf"])],blank=True,null=True)
     MVP_info_sheet = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     stud_respon = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
     resid_tuit_app = models.FileField(upload_to=user_directory_path,validators=[FileExtensionValidator(allowed_extensions=['pdf'])],blank=True,null = True)
