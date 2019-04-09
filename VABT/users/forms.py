@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
+from users.models import UserExtended
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -21,3 +22,13 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+
+class UserExtendedRegisterForm(forms.ModelForm):
+    class Meta:
+        model = UserExtended
+        fields = ['phone_number','phone_notifications','carrier']
+
+class UserExtendedUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserExtended
+        fields = ['phone_number','phone_notifications','carrier']
