@@ -1,34 +1,53 @@
 ﻿{%extends "dashboard/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h1>User: {{ view.kwargs.username}} </h1>
+{% block submit_buttons_bottom %}
+   <h1>Username: {{ user.username}} </h1>
+{% for post in posts %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
+            <div class="media-body">
+                <div class="article-metadata">
+                    <small class="text-muted">Begin date: {{ post.date_began|date:"F d, Y T g:i" }}</small>
+                </div>
+                <h4><a class="article-title" href="{% url 'post-detail' post.id %}">Name: {{ post.student.last_name }},{{post.student.first_name}}</a></h4>
+
+                <p class="article-content">Notes: {{ post.comment }}</p>
+
+            </div>
+                
+        </article>
+  
         <table style="width:100%">
-        <caption></caption>
+        <caption>Last Certified by:</caption>
         <tr>
-        <th>Forms</th>
-        <th>Checklist</th> 
-        <th>Certify</th>
-        </tr>
-        <tr>
-        <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
-        <td>NO</td> 
-        <td><form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-            </form>
-        </td>
-        </tr>
+            <th>Forms</th>
+            <th>Date</th> 
+            <th>Certify</th>
+            </tr>
+            <tr> 
+            <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
+            <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {{ block.super }}
+
+  
+                <label class="switch" action="">
+                    <input type="checkbox" value="clicked!" name="_make-unique" {% if post.Certificate_of_eligibility == False %} unchecked {% endif %} {% if post.Certificate_of_eligibility == True %} checked {% endif %}>
+
+                    <span class="slider"></span>
+                </label>
+                </form>
+            </td>
+            </tr>
         <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
-        <td>NO</td> 
+        <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" {% if post.MVP_information_sheet == False %} unchecked {% endif %} {% if post.MVP_information_sheet == True %} checked {% endif %}>
                 <span class="slider"></span>
             </label>
             </form> 
@@ -36,12 +55,12 @@
         </tr>
         <tr>
         <td>NMSU MVP Student Responsibilities Form</td>
-        <td>NO</td> 
+        <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" {% if post.Student_responsibility == False %} unchecked {% endif %} {% if post.Student_responsibility == True %} checked {% endif %}>
                 <span class="slider"></span>
             </label>
             </form>
@@ -49,22 +68,23 @@
         </tr>
             <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
-        <td>NO</td> 
+        <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" {% if post.Resident_tuition_app == False %} unchecked {% endif %} {% if  post.Resident_tuition_app == True %} checked {% endif %}>
                 <span class="slider"></span>
             </label>
             </form>
         </td>
         </tr>
     </table>
-
+{% endfor %}
 
 
     <form action="#" method="get">
         <input type="submit" class="btn" value="Notify Student" name="certbtn">
     </form>
+{% endblock submit_buttons_bottom %}
 {% endblock content %}

@@ -8,30 +8,22 @@ from django.urls import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField()
+    date_began = models.DateTimeField(default=timezone.now)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    Certificate_of_eligibility = models.BooleanField(default=False)
+    MVP_information_sheet = models.BooleanField(default=False)
+    Student_responsibility = models.BooleanField(default=False)
+    Resident_tuition_app = models.BooleanField(default=False)
+    Concise_student_schedule = models.BooleanField(default=False)
+    Star_degree_audit = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('post-detail',kwargs={'pk':self.pk})
-
-class chapter(models.Model):
-    form_coe = models.BooleanField(default=False)
-    form_info = models.BooleanField(default=False)
-    form_resp = models.BooleanField(default=False)
-    form_resident = models.BooleanField(default=False)
-    form_concise = models.BooleanField(default=False)
-    form_starda = models.BooleanField(default=False)
-
-    def save(self, *args, **kwargs):
-        if self.is_published:
-            self.draft = False
-        if self.draft:
-            self.published = False
-        super().save(*args, **kwargs)
 
 
         

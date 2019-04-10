@@ -25,18 +25,49 @@ from django.core.mail import EmailMessage
 def home(request):
         return render(request, 'dashboard/home.html')
 
+#for x in User
+posts =[
+    {
+        'author':'Ian Navarro',
+        'title': 'Blog Post 1',
+        'content': 'First post!',
+        'date_posted': 'March 5th, 2019'
+        },
+        {
+        'author':'Kyla Navarro',
+        'title': 'Blog Post 2',
+        'content': '2nd post!',
+        'date_posted': 'March 6th, 2019'
+        }
+    ]
+
+
 class PostListView(ListView):
-    model = User
+    model = Post
     template_name = 'dashboard/certifier_home.html'
-    context_object_name = 'users'
+    context_object_name = 'posts'
    #ordering  = ['-date_posted']
-  
+
+#@admin.register(Post)  
 class UserPostListView(ListView):
-    model = User
+    model = Post
     template_name = 'dashboard/user_posts.html'
-    context_object_name = 'users'
+    context_object_name = 'posts'
     def get_query_set(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(student=user)
+    
+    def response_change(self, request, obj):
+        if "_make-unique" in request.POST:
+            print("Hello world")
+    #        matching_names_except_this = self.get_queryset(request).filter(name=obj.name).exclude(ProcessLookupError=obj.id)
+    #        matching_names_except_this.delete()
+    #        obj.Certficate_of_eligibility = True
+    #        obj.save()
+    #        self.message_user(request, "Certificate of eligibility changed")
+    #        return HttpResponseRedirect(".")
+        return super().response_change(request, obj)
+
     #need to get the kwarg stuff for the email
     def get(self, request, *args, **kwargs):
         if(request.GET.get('certbtn')):
@@ -52,7 +83,10 @@ class UserPostListView(ListView):
                                                                          #obviously this needs change
             messages.success(request, f'Your Message Has Been Sent to '+ request.user.first_name) 
         return super(UserPostListView, self).get(request, *args, **kwargs)
-       
+
+    
+class PostDetailView(DetailView):
+    model = Post
 
 def about(request):
     return render(request, 'dashboard/about.html',{'title':'About'})
