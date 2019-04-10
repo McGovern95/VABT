@@ -21,6 +21,7 @@ def register(request):
             user.userextended.save()
             user.refresh_from_db()
             user.save()
+            
             request.user.is_staff = False
             request.user.is_student = True
             request.user.is_firsttime = True

@@ -15,6 +15,7 @@ class Post(models.Model):
     Certificate_of_eligibility = models.BooleanField(default=False)
     MVP_information_sheet = models.BooleanField(default=False)
     Student_responsibility = models.BooleanField(default=False)
+
     Resident_tuition_app = models.BooleanField(default=False)
     Concise_student_schedule = models.BooleanField(default=False)
     Star_degree_audit = models.BooleanField(default=False)

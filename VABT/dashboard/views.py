@@ -76,6 +76,7 @@ class UserPostListView(ListView):
             'The certifier has sent you a notification!',
             'VABT Notifications' +'<sender@gmail.com>',
             #what goes here?
+
             ['mcgovernchristian@gmail.com'],
             headers = {'Reply-To': 'contact_email@gmail.com' }
             )

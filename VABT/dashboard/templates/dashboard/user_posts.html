@@ -11,7 +11,8 @@
                     <small class="text-muted">Begin date: {{ post.date_began|date:"F d, Y T g:i" }}</small>
                 </div>
                 <h4><a class="article-title" href="{% url 'post-detail' post.id %}">Name: {{ post.student.last_name }},{{post.student.first_name}}</a></h4>
-
+                <h4>{{ post.student.email }}</h4>
+                <h4>{{ post.student.userextended.phone_number }}</h4>
                 <p class="article-content">Notes: {{ post.comment }}</p>
 
             </div>
