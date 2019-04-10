@@ -20,6 +20,7 @@ class UserExtended(models.Model):
     is_student = models.BooleanField(default=True)
     #regular expression validator for phone numbers
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    phone_notifications = models.BooleanField(default=False)
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     carrier = models.CharField(max_length=15,choices=[('AT&T','AT&T'),('Verizon','Verizon'),('Sprint','Sprint'),('T-Mobile','T-Mobile'),('Virgin', 'Virgin')], blank=True)
     ##Checklist data

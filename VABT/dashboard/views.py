@@ -144,16 +144,71 @@ def student_home(request):
             'star_form' : star_form
     }
 # sending notifications to certifier using built in django email function    
-    if(request.GET.get('mybtn')):
-        email = EmailMessage(
-        'VABT Notification',
-        'The user has sent you their documents',
-        'VABT Notifications' +'<sender@gmail.com>',
-        [request.user.email],
-        headers = {'Reply-To': 'contact_email@gmail.com' }
-        )
-        email.send()
-        messages.success(request, f'Your Message Has Been Sent')
+    #if(request.GET.get('mybtn')):
+    #    email = EmailMessage(
+    #    'VABT Notification',
+    #    'The user has sent you their documents',
+    #    'VABT Notifications' +'<sender@gmail.com>',
+    #    [request.user.email],
+    #    headers = {'Reply-To': 'contact_email@gmail.com' }
+    #    )
+    #    email.send()
+    #    messages.success(request, f'Your Message Has Been Sent')
+    
+    if(request.user.userextended.phone_notifications == True):
+        if(request.GET.get('mybtn')):
+            if(request.user.userextended.carrier == 'Verizon'):
+                email2 = EmailMessage(
+                'VABT Notification',
+                'The user has sent you their documents',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [request.user.userextended.phone_number +'@vtext.com'],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email2.send()
+                messages.success(request, f'Your Phone Message Has Been Sent')
+            elif(request.user.userextended.carrier == 'AT&T'):
+                email3 = EmailMessage(
+                'VABT Notification',
+                'The user has sent you their documents',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [request.user.userextended.phone_number +'@txt.att.net'],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email3.send()
+                messages.success(request, f'Your Phone Message Has Been Sent')
+            elif(request.user.userextended.carrier == 'Sprint'):
+                email4 = EmailMessage(
+                'VABT Notification',
+                'The user has sent you their documents',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [request.user.userextended.phone_number +'@messaging.sprintpcs.com'],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email4.send()
+                messages.success(request, f'Your Phone Message Has Been Sent')
+            elif(request.user.userextended.carrier == 'T-Mobile'):
+                email4 = EmailMessage(
+                'VABT Notification',
+                'The user has sent you their documents',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [request.user.userextended.phone_number +'@tmomail.net'],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email4.send()
+                messages.success(request, f'Your Phone Message Has Been Sent')
+            elif(request.user.userextended.carrier == 'Virgin'):
+                email4 = EmailMessage(
+                'VABT Notification',
+                'The user has sent you their documents',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [request.user.userextended.phone_number +'@vmobl.com'],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email4.send()
+                messages.success(request, f'Your Phone Message Has Been Sent')
+            #else:
+            #    messages.warning(request, f'Your Message Was not sent')
 
     return render(request, 'dashboard/student_home.html',context)
 
