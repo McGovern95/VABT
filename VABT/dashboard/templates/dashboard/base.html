@@ -26,11 +26,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav mr-auto">  
-                        <a class="nav-item nav-link" href="{%url 'dashboard-home'%}">Home</a>
-                        <a class="nav-item nav-link" href="{%url 'dashboard-about'%}">About</a>
-                        <a class="nav-item nav-link" href="{%url 'dashboard-contact'%}">Contact</a>
-                        
+                    <div class="navbar-nav mr-auto"> 
+                        {% if request.user.is_staff %}
+                        {%elif request.user.is_authenticated %}
+                        {%else%}
+                            <a class="nav-item nav-link" href="{%url 'dashboard-home'%}">Home</a>
+                            <a class="nav-item nav-link" href="{%url 'dashboard-about'%}">About</a>
+                            <a class="nav-item nav-link" href="{%url 'dashboard-contact'%}">Contact</a>
+                        {% endif %}
                     </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
