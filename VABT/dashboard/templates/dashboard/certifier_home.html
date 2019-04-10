@@ -22,48 +22,50 @@
 
         <div role"tabpanel" class="tab-pane active" id="chapter33">
             {% for post in posts %}
-                <article class="media content-section">
-                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
-                    <div class="media-body">
-                        <div class="article-metadata">
-                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
-                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                {% if post.student.userextended.chapter == '33' %}
+                    <article class="media content-section">
+                        <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
+                        <div class="media-body">
+                            <div class="article-metadata">
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
+                                <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                            </div>
+                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
-                            <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
-                    </div>
-                </article>
+                    </article>
+                {% endif %}
             {% endfor %} 
         </div>
 
         <div role"tabpanel" class="tab-pane" id="chapter30">
-            {% for user in users %}
-                {% if user.is_staff == False and user.userextended.chapter == '30' %}
-                <article class="media content-section">
-                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
-                    <div class="media-body">
-                        <div class="article-metadata">
-                            <a class="mr-2" href="">{{ user.last_name }},</a>
-                            <a class="mr-0" href="">{{ user.first_name }}</a>
+            {% for post in posts %}
+                {% if post.student.userextended.chapter == '30' %}
+                    <article class="media content-section">
+                        <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
+                        <div class="media-body">
+                            <div class="article-metadata">
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
+                                <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                            </div>
+                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
-                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
-                    </div>
-                </article>
+                    </article>
                 {% endif %}
             {% endfor %} 
 
         </div>
 
         <div role"tabpanel" class="tab-pane" id="chapter31">
-            {% for user in users %}
-                {% if user.is_staff == False and user.userextended.chapter == '31' %}
+             {% for post in posts %}
+                {% if post.student.userextended.chapter == '31' %}
                 <article class="media content-section">
-                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                     <div class="media-body">
                         <div class="article-metadata">
-                            <a class="mr-2" href="">{{ user.last_name }},</a>
-                            <a class="mr-0" href="">{{ user.first_name }}</a>
+                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
+                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
                         </div>
-                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
                     </div>
                 </article>
                 {% endif %}
@@ -71,32 +73,32 @@
         </div>
 
         <div role"tabpanel" class="tab-pane" id="chapter35">
-            {% for user in users %}
-                {% if user.is_staff == False and user.userextended.chapter == '35' %}
+             {% for post in posts %}
+                {% if post.student.userextended.chapter == '35' %}
                 <article class="media content-section">
-                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                     <div class="media-body">
                         <div class="article-metadata">
-                            <a class="mr-2" href="#">{{ user.last_name }},</a>
-                            <a class="mr-0" href="#">{{ user.first_name }}</a>
+                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
+                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
                         </div>
-                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
                     </div>
                 </article>
                 {% endif %}
             {% endfor %} 
         </div>
         <div role"tabpanel" class="tab-pane" id="chapter16">
-            {% for user in users %}
-                {% if user.is_staff == False and user.userextended.chapter == '1606' %}
+             {% for post in posts %}
+                {% if post.student.userextended.chapter == '1606' %}
                 <article class="media content-section">
-                    <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" />
+                    <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                     <div class="media-body">
                         <div class="article-metadata">
-                            <a class="mr-2" href="">{{ user.last_name }},</a>
-                            <a class="mr-0" href="">{{ user.first_name }}</a>
+                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
+                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
                         </div>
-                            <a class="mr-2" href="">Chapter-{{ user.userextended.chapter }}</a>
+                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
                     </div>
                 </article>
                 {% endif %}

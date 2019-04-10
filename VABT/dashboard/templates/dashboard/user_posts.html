@@ -2,8 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% block submit_buttons_bottom %}
+<h1 class="mb-3"> Posts by {{ view.kwargs.username }} </h1>
    <h1>Username: {{ user.username}} </h1>
 {% for post in posts %}
+{% if post.student.username == view.kwargs.username %}
         <article class="media content-section">
             <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
             <div class="media-body">
@@ -14,7 +16,6 @@
                 <h4>{{ post.student.email }}</h4>
                 <h4>{{ post.student.userextended.phone_number }}</h4>
                 <p class="article-content">Notes: {{ post.comment }}</p>
-
             </div>
                 
         </article>
@@ -81,6 +82,7 @@
         </td>
         </tr>
     </table>
+{% endif %}
 {% endfor %}
 
 

@@ -4,8 +4,9 @@ from django.contrib.auth.decorators import login_required #user must be logged i
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth import login, authenticate
-
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UserExtendedRegisterForm, UserExtendedUpdateForm
+from dashboard.models import Post
+from django.contrib.auth.models import User
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UserExtendedRegisterForm, UserExtendedUpdateForm, ChecklistCreate
 # Create your views here.
 
 def register(request):
@@ -21,7 +22,10 @@ def register(request):
             user.userextended.save()
             user.refresh_from_db()
             user.save()
-            
+            print(user)
+            #owner = User.o.get(id=student_id)
+            Post.objects.create(title="Checklist",comment="Default", student = user)
+
             request.user.is_staff = False
             request.user.is_student = True
             request.user.is_firsttime = True

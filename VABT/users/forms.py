@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
+from dashboard.models import Post
 from users.models import UserExtended
 
 class UserRegisterForm(UserCreationForm):
@@ -32,3 +33,8 @@ class UserExtendedUpdateForm(forms.ModelForm):
     class Meta:
         model = UserExtended
         fields = ['phone_number','phone_notifications','carrier']
+
+class ChecklistCreate(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'comment', 'student']
