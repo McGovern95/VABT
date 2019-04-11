@@ -156,7 +156,7 @@ class UserPostListView(ListView):
 
                 email = EmailMessage(
                 'VABT Notification',
-                'The certifier has sent you a notification!',
+                'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                 'VABT Notifications' +'<sender@gmail.com>',
                 [userdefault.email],
                 headers = {'Reply-To': 'contact_email@gmail.com' }
@@ -168,7 +168,7 @@ class UserPostListView(ListView):
             if(request.GET.get('certbtn')):
                 email = EmailMessage(
                 'VABT Notification',
-                'The certifier has sent you a notification!',
+                'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                 'VABT Notifications' +'<sender@gmail.com>',
                 [userdefault.email],
                 headers = {'Reply-To': 'contact_email@gmail.com' }
