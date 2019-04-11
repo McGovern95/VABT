@@ -55,9 +55,9 @@
         </td>
         </tr>
         <tr>
-                {%if user.userextended.chapter == '30' or user.userextended.chapter == '1606' or user.userextended.chapter == '35' %}
+                {%if post.student.userextended.chapter == '30' or post.student.userextended.chapter == '1606' or post.student.userextended.chapter == '35' %}
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_30_1606_1607_35_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td>
-                {% elif user.userextended.chapter == '31' %} 
+                {% elif post.student.userextended.chapter == '31' %} 
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_31_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%else%} 
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
