@@ -24,7 +24,7 @@ def register(request):
             user.save()
             print(user)
             #owner = User.o.get(id=student_id)
-            Post.objects.create(title="Checklist",comment="Default", student = user)
+            Post.objects.create(title="Checklist for"+user.last_name,comment="Default", student = user)
 
             request.user.is_staff = False
             request.user.is_student = True

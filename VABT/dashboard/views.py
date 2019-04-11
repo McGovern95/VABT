@@ -72,13 +72,41 @@ class UserPostListView(ListView):
     def get(self, request, *args, **kwargs):
         userdefault = User.objects.get(username = kwargs.get('username'))
         userextended = UserExtended.objects.get(user=userdefault)
+        studentcert = Post.objects.get(student=userdefault)
+
+        if(studentcert.Certificate_of_eligibility == False ):
+            message1 = "Certificate of eligibility (COE) \n"
+        if(studentcert.MVP_information_sheet == False ):
+            message2 = "Information Sheet \n"
+        if(studentcert.Student_responsibility == False ):
+            message3 = "Student Responsibility \n"
+        if(studentcert.Resident_tuition_app == False ):
+            message4 = "Resident Tuition Application \n"
+        if(studentcert.Concise_student_schedule == False ):
+            message5 = "Concise Student Schedule \n"
+        if(studentcert.Star_degree_audit == False ):
+            message6 = "Star Degree Audit \n"
+
+        if(studentcert.Certificate_of_eligibility == True ):
+            message1 = ""
+        if(studentcert.MVP_information_sheet == True ):
+            message2 = ""
+        if(studentcert.Student_responsibility == True ):
+            message3 = ""
+        if(studentcert.Resident_tuition_app == True ):
+            message4 = ""
+        if(studentcert.Concise_student_schedule == True ):
+            message5 = ""
+        if(studentcert.Star_degree_audit == True ):
+            message6 = ""
+        
         #logic for phone/email notifications 
         if(userextended.phone_notifications == True):
              if(request.GET.get('certbtn')):
                 if(userextended.carrier == 'Verizon'):
                     text = EmailMessage(
-                    'VABT Notification',
-                    'The user has sent you their documents',
+                    'VABT Notification ',
+                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@vtext.com'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
@@ -88,7 +116,7 @@ class UserPostListView(ListView):
                 elif(userextended.carrier == 'AT&T'):
                     text = EmailMessage(
                     'VABT Notification',
-                    'The user has sent you their documents',
+                    ' Courtland you fucker! Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@txt.att.net'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
@@ -98,7 +126,7 @@ class UserPostListView(ListView):
                 elif(userextended.carrier == 'Sprint'):
                     text = EmailMessage(
                     'VABT Notification',
-                    'The user has sent you their documents',
+                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@messaging.sprintpcs.com'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
@@ -108,7 +136,7 @@ class UserPostListView(ListView):
                 elif(userextended.carrier == 'T-Mobile'):
                     text = EmailMessage(
                     'VABT Notification',
-                    'The user has sent you their documents',
+                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@tmomail.net'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
@@ -118,7 +146,7 @@ class UserPostListView(ListView):
                 elif(userextended.carrier == 'Virgin'):
                      text = EmailMessage(
                     'VABT Notification',
-                    'The user has sent you their documents',
+                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@vmobl.com'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }

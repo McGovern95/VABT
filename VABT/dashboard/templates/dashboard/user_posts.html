@@ -32,7 +32,6 @@
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
             <td><form method="post" enctype="multipart/form-data">
                 {{ block.super }}
-
   
                 <label class="switch" action="">
                     <input type="checkbox" value="clicked!" name="_make-unique" {% if post.Certificate_of_eligibility == False %} unchecked {% endif %} {% if post.Certificate_of_eligibility == True %} checked {% endif %}>
@@ -82,6 +81,48 @@
         </td>
         </tr>
     </table>
+
+    {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '35' %}
+    <table style="width:100%">
+            <caption>Last Certified by:</caption>
+            <tr>
+                <th>Forms</th>
+                <th>Date</th> 
+                <th>Certify</th>
+                </tr>
+                <tr> 
+                <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
+                <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+                <td><form method="post" enctype="multipart/form-data">
+                    {{ block.super }}
+  
+                    <label class="switch" action="">
+                        <input type="checkbox" value="clicked!" name="_make-unique" {% if post.Student_responsibility == False %} unchecked {% endif %} {% if post.Student_responsibility == True %} checked {% endif %}>
+
+                        <span class="slider"></span>
+                    </label>
+                    </form>
+                </td>
+                </tr>
+            <tr>
+            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+            <td><form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <label class="switch">
+                    <input type="checkbox" {% if post.Star_degree_audit == False %} unchecked {% endif %} {% if post.Star_degree_audit == True %} checked {% endif %}>
+                    <span class="slider"></span>
+                </label>
+                </form> 
+            </td>
+            </tr>
+    </table>
+{% endif %}
+
+
+
+    
 {% endif %}
 {% endfor %}
 
