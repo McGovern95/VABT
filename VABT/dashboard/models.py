@@ -21,7 +21,7 @@ class Post(models.Model):
     Star_degree_audit = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return '%s %s' % (self.title, self.student)
 
     def get_absolute_url(self):
         return reverse('post-detail',kwargs={'pk':self.pk})

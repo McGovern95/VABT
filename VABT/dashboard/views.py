@@ -70,19 +70,85 @@ class UserPostListView(ListView):
 
     #need to get the kwarg stuff for the email
     def get(self, request, *args, **kwargs):
-        if(request.GET.get('certbtn')):
-            email = EmailMessage(
-            'VABT Notification',
-            'The certifier has sent you a notification!',
-            'VABT Notifications' +'<sender@gmail.com>',
-            #what goes here?
+        userdefault = User.objects.get(username = kwargs.get('username'))
+        userextended = UserExtended.objects.get(user=userdefault)
+        #logic for phone/email notifications 
+        if(userextended.phone_notifications == True):
+             if(request.GET.get('certbtn')):
+                if(userextended.carrier == 'Verizon'):
+                    text = EmailMessage(
+                    'VABT Notification',
+                    'The user has sent you their documents',
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userextended.phone_number +'@vtext.com'],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'AT&T'):
+                    text = EmailMessage(
+                    'VABT Notification',
+                    'The user has sent you their documents',
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userextended.phone_number +'@txt.att.net'],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'Sprint'):
+                    text = EmailMessage(
+                    'VABT Notification',
+                    'The user has sent you their documents',
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userextended.phone_number +'@messaging.sprintpcs.com'],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'T-Mobile'):
+                    text = EmailMessage(
+                    'VABT Notification',
+                    'The user has sent you their documents',
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userextended.phone_number +'@tmomail.net'],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'Virgin'):
+                     text = EmailMessage(
+                    'VABT Notification',
+                    'The user has sent you their documents',
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userextended.phone_number +'@vmobl.com'],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                     text.send()
+                     messages.success(request, f'Your Phone Message Has Been Sent')
 
-            ['mcgovernchristian@gmail.com'],
-            headers = {'Reply-To': 'contact_email@gmail.com' }
-            )
-            email.send()
-                                                                         #obviously this needs change
-            messages.success(request, f'Your Message Has Been Sent to '+ request.user.first_name) 
+                email = EmailMessage(
+                'VABT Notification',
+                'The certifier has sent you a notification!',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [userdefault.email],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email.send()   
+                messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
+                
+        elif(userextended.phone_notifications == False):
+            if(request.GET.get('certbtn')):
+                email = EmailMessage(
+                'VABT Notification',
+                'The certifier has sent you a notification!',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [userdefault.email],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+                email.send()                                                             
+                messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
+
+
         return super(UserPostListView, self).get(request, *args, **kwargs)
 
     
