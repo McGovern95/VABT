@@ -2,8 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% block submit_buttons_bottom %}
-<h1 class="mb-3"> Posts by {{ view.kwargs.username }} </h1>
-   <h1>Username: {{ user.username}} </h1>
+<script> function myFunc() { alert("You are about to certify this form") }</script>
 {% for post in posts %}
 {% if post.student.username == view.kwargs.username %}
         <article class="media content-section">
@@ -13,8 +12,8 @@
                     <small class="text-muted">Begin date: {{ post.date_began|date:"F d, Y T g:i" }}</small>
                 </div>
                 <h4><a class="article-title" href="{% url 'post-detail' post.id %}">Name: {{ post.student.last_name }},{{post.student.first_name}}</a></h4>
-                <h4>{{ post.student.email }}</h4>
-                <h4>{{ post.student.userextended.phone_number }}</h4>
+                <h5>Email: {{ post.student.email }}</h5>
+                <h5>Phone#: {{ post.student.userextended.phone_number }}</h5>
                 <p class="article-content">Notes: {{ post.comment }}</p>
             </div>
                 
@@ -30,8 +29,8 @@
             <tr> 
             <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-            <td><form method="post" enctype="multipart/form-data">
-                {{ block.super }}
+            <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
+               
   
                 <label class="switch" action="">
                     <input type="checkbox" value="clicked!" name="_make-unique" {% if post.Certificate_of_eligibility == False %} unchecked {% endif %} {% if post.Certificate_of_eligibility == True %} checked {% endif %}>
@@ -44,7 +43,7 @@
         <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
         <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-        <td><form method="post" enctype="multipart/form-data">
+        <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <label class="switch">
@@ -63,7 +62,7 @@
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%endif%}     
         <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-        <td><form method="post" enctype="multipart/form-data">
+        <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <label class="switch">
@@ -76,7 +75,7 @@
             <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
         <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-        <td><form method="post" enctype="multipart/form-data">
+        <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <label class="switch">
@@ -99,7 +98,7 @@
                 <tr> 
                 <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
                 <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-                <td><form method="post" enctype="multipart/form-data">
+                <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
                     {{ block.super }}
   
                     <label class="switch" action="">
@@ -113,7 +112,7 @@
             <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-            <td><form method="post" enctype="multipart/form-data">
+            <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <label class="switch">
