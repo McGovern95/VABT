@@ -230,13 +230,16 @@ def student_home(request):
         conc_form = ConcStudSchedForm(instance=request.user.userextended)
         star_form = StarDegAuditForm(instance=request.user.userextended)
 
+    certs = Post.objects.all()#for the certification
+
     context = {
             'cert_form': cert_form,
             'mvp_form' : mvp_form,
             'stud_form' : stud_form,
             'resid_form' : resid_form,
             'conc_form' : conc_form,
-            'star_form' : star_form
+            'star_form' : star_form,
+            'certs' : certs
     }
     return render(request, 'dashboard/student_home.html',context)
 

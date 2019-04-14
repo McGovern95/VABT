@@ -10,7 +10,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     comment = models.TextField()
     date_began = models.DateTimeField(default=timezone.now)
-    student = models.ForeignKey(User, on_delete=models.CASCADE)
+    student = models.ForeignKey(User, related_name='certs', on_delete=models.CASCADE)
 
     Certificate_of_eligibility = models.BooleanField(default=False)
     MVP_information_sheet = models.BooleanField(default=False)

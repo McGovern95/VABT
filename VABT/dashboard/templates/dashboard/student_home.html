@@ -6,13 +6,19 @@
           <table style="width:100%">
           <caption></caption>
           <tr>
-            <th>First Visit Files</th>
-            <th>Approved?</th> 
+            <th>First Visit Files </th>
+            <th>Approved? </th> 
             <th>Upload</th>
           </tr>
           <tr>
             <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
-            <td>NO</td> 
+             {% for p in certs %}
+                {%if p.student.username == user.username and p.Certificate_of_eligibility == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Certificate_of_eligibility == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %}
             <td>
                 {% csrf_token %}
                 {{ cert_form.as_p}}
@@ -20,7 +26,13 @@
           </tr>
           <tr>
             <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.MVP_information_sheet == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.MVP_information_sheet == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %}
             <td>
                 {% csrf_token %}
                 {{ mvp_form.as_p }}
@@ -34,7 +46,13 @@
                 {%else%} 
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%endif%}     
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Student_responsibility == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Student_responsibility == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ stud_form.as_p }} 
@@ -42,7 +60,13 @@
           </tr>
               <tr>
             <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Resident_tuition_app == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Resident_tuition_app == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %}  
             <td>
                 {% csrf_token %}
                 {{ resid_form.as_p }}          
@@ -60,12 +84,18 @@
         <caption></caption>
           <tr>
             <th>Chapter 33 Benefits</th>
-            <th>Checklist</th> 
+            <th>Approved</th>
             <th>Upload</th>
           </tr>
           <tr>
             <td><a href="https://my.nmsu.edu">Concise Student Schedule </a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Concise_student_schedule == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Concise_student_schedule == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ conc_form.as_p }}          
@@ -73,7 +103,13 @@
           </tr>
           <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Star_degree_audit == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Star_degree_audit == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ star_form.as_p }}  
@@ -90,12 +126,18 @@
        <caption></caption>
           <tr>
             <th>Chapter 31 Benefits</th>
-            <th>Checklist</th> 
+            <th>Approved?</th> 
             <th>Upload</th>
           </tr>
           <tr>
             <td><a href="https://my.nmsu.edu">Concise Student Schedule </a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Concise_student_schedule == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Concise_student_schedule == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ conc_form.as_p }}
@@ -103,7 +145,13 @@
           </tr>
           <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Star_degree_audit == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Star_degree_audit == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ star_form.as_p }}
@@ -120,12 +168,18 @@
        <caption></caption>
           <tr>
             <th>Chapter 30 Benefits</th>
-            <th>Checklist</th> 
+            <th>Approved?</th> 
             <th>Upload</th>
           </tr>
           <tr>
             <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
-            <td>NO</td> 
+           {% for p in certs %}
+                {%if p.student.username == user.username and p.Concise_student_schedule == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Concise_student_schedule == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ conc_form.as_p }}
@@ -134,7 +188,13 @@
           </tr>
           <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Star_degree_audit == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Star_degree_audit == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ star_form.as_p }}
@@ -151,12 +211,18 @@
        <caption></caption>
           <tr>
             <th>Chapter 35 Benefits</th>
-            <th>Checklist</th> 
+            <th>Approved?</th> 
             <th>Upload</th>
           </tr>
           <tr>
             <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Concise_student_schedule == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Concise_student_schedule == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ conc_form.as_p }}      
@@ -164,7 +230,13 @@
           </tr>
           <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Star_degree_audit == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Star_degree_audit == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ star_form.as_p }}
@@ -181,12 +253,18 @@
         <caption></caption>
           <tr>
             <th>Chapter 1606 Benefits</th>
-            <th>Checklist</th> 
+            <th>Approved?</th> 
             <th>Upload</th>
           </tr>
           <tr>
             <td><a href="https://my.nmsu.edu">Concise Student Schedule </a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Concise_student_schedule == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Concise_student_schedule == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ conc_form.as_p }}
@@ -194,7 +272,13 @@
           </tr>
           <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
-            <td>NO</td> 
+            {% for p in certs %}
+                {%if p.student.username == user.username and p.Star_degree_audit == True %}
+                <td><img src="/media/green_check.png"></td>
+                {%elif p.student.username == user.username and p.Star_degree_audit == False %}
+                <td><img src="/media/red_check.png"></td>
+                {%endif%}
+             {% endfor %} 
             <td>
                 {% csrf_token %}
                 {{ star_form.as_p }}
