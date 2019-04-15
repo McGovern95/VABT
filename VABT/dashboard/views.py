@@ -116,7 +116,7 @@ class UserPostListView(ListView):
                 elif(userextended.carrier == 'AT&T'):
                     text = EmailMessage(
                     'VABT Notification',
-                    ' Courtland you fucker! Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@txt.att.net'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
