@@ -85,10 +85,15 @@
     <Content Include="db.sqlite3" />
     <Content Include="django_project.pyproj.user" />
     <Content Include="media\default.jpg" />
+    <Content Include="media\green_check.png" />
     <Content Include="media\profile_pics\05-patrick.w700.h700.jpg" />
     <Content Include="media\profile_pics\05-patrick.w700.h700_Aq9el71.jpg" />
     <Content Include="media\profile_pics\05-patrick.w700.h700_gNVH5su.jpg" />
     <Content Include="media\profile_pics\squidward-isnt-a-squid-and-the-world-doesnt-make--2-30983-1509106810-0_dblbig.jpg" />
+    <Content Include="media\red_check.png" />
+    <Content Include="media\students\Lee_Sam1\cert_form.pdf" />
+    <Content Include="media\students\McGovern_Christian\audit_2018-11-12_11_07_35.0_Mon_Nov_12_11_07_40_MST_2018.pdf" />
+    <Content Include="media\students\McGovern_Christian\McGovern-spr2019_ConciseStudenSchedule.pdf" />
     <Content Include="requirements.txt" />
     <Content Include="users\migrations\__pycache__\0001_initial.cpython-37.pyc" />
     <Content Include="users\migrations\__pycache__\__init__.cpython-37.pyc" />
@@ -123,6 +128,10 @@
     <Folder Include="dashboard\__pycache__\" />
     <Folder Include="media\" />
     <Folder Include="media\profile_pics\" />
+    <Folder Include="media\students\" />
+    <Folder Include="media\students\Lee_Sam1\" />
+    <Folder Include="media\students\McGovern_Christian\" />
+    <Folder Include="media\students\Sanchez_Hector\" />
     <Folder Include="obj\" />
     <Folder Include="obj\Debug\" />
     <Folder Include="users\" />
