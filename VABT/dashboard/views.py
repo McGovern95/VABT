@@ -16,7 +16,7 @@ from django.views.generic import (
         )
 from .models import Post
 from .models import User
-from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
+from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm, Cert1Form
 from django.core.mail import EmailMessage
 #from django.http import HttpResponse
 #Create your views here.
@@ -73,6 +73,21 @@ class UserPostListView(ListView):
         userdefault = User.objects.get(username = kwargs.get('username'))
         userextended = UserExtended.objects.get(user=userdefault)
         studentcert = Post.objects.get(student=userdefault)
+        
+
+        ##HERE IAN. WE DID ITTTT
+        if(request.GET.get('boolcoecert')):
+            if(studentcert.Certificate_of_eligibility == False):
+               studentcert.Certificate_of_eligibility = True
+               studentcert.save()
+               messages.success(request, f' set to True')
+            elif(studentcert.Certificate_of_eligibility == True):
+                studentcert.Certificate_of_eligibility = False
+                studentcert.save()
+                messages.success(request, f' set to False')
+
+        
+
 
         if(studentcert.Certificate_of_eligibility == False ):
             message1 = "Certificate of eligibility (COE) \n"

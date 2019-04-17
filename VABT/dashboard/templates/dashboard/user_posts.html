@@ -29,15 +29,12 @@
             <tr> 
             <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-            <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
+            <td><form method="get" action="#" enctype="multipart/form-data">
                
   
-                <label class="switch" action="">
-                    <input type="checkbox" value="clicked!" name="_make-unique" {% if post.Certificate_of_eligibility == False %} unchecked {% endif %} {% if post.Certificate_of_eligibility == True %} checked {% endif %}>
-
-                    <span class="slider"></span>
-                </label>
-                </form>
+                    <input type="submit" value="clicked!" name="boolcoecert"  />
+                    
+            </form>
             </td>
             </tr>
         <tr>
