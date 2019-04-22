@@ -41,52 +41,58 @@
             <td>
                 <form method="get">
 
-                    <input type="submit" {% if post.Certificate_of_eligibility == False %} value="Certify" {% endif %} {% if post.Certificate_of_eligibility == True %} value="Uncertify" {% endif %} name="boolcoecert" />
+                    <input type="submit" {% if post.Certificate_of_eligibility == False %} value="Certify" {%else%} value="Uncertify" {% endif %} name="boolcoecert" />
 
                 </form>
             </td>
-            <td>{% if post.Certificate_of_eligibility == False %} <img src="/media/red_check.png">{% endif %} {% if post.Certificate_of_eligibility == True %} <img src="/media/green_check.png">{% endif %}</td>
+            <td>{% if post.Certificate_of_eligibility == False %} <img src="/media/red_check.png">{% else %} <img src="/media/green_check.png">{% endif %}</td>
         </tr>
         <tr>
-        <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
+        {%if post.student.userextended.MVP_info_sheet == null %}
+            <th>Student has not uploaded MVP Information Sheet</th>
+        {%else%}
+            <td><a href="/media/{{post.student.userextended.MVP_info_sheet}}" target="_blank">Open Students MVP Information sheet</a></td>
+        {%endif %}
         <td><small class="text-muted">{{ post.date_info|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="get">
                 
-                    <input type="submit" {% if post.MVP_information_sheet == False %} value="Certify"{% endif %} {% if post.MVP_information_sheet == True %} value="Uncertify"{% endif %} name="boolinfocert"  />
+                    <input type="submit" {% if post.MVP_information_sheet == False %} value="Certify" {% else %} value="Uncertify"{% endif %} name="boolinfocert"  />
                     
             </form>
         </td>
-        <td>{% if post.MVP_information_sheet == False %} <img src="/media/red_check.png">{% endif %} {% if post.MVP_information_sheet == True %} <img src="/media/green_check.png">{% endif %}</td>
+        <td>{% if post.MVP_information_sheet == False %} <img src="/media/red_check.png"> {% else %} <img src="/media/green_check.png">{% endif %}</td>
 
         </tr>
         <tr>
-                {%if post.student.userextended.chapter == '30' or post.student.userextended.chapter == '1606' or post.student.userextended.chapter == '35' %}
-                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_30_1606_1607_35_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td>
-                {% elif post.student.userextended.chapter == '31' %} 
-                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_31_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
-                {%else%} 
-                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
-                {%endif%}     
+            {%if post.student.userextended.stud_respon == null %}
+                <th>Student has not uploaded Student Responsibilty sheet</th>
+            {%else%}
+                <td><a href="/media/{{post.student.userextended.stud_respon}}" target="_blank">Open Students Responsibility Sheet</a></td>
+            {%endif %}    
         <td><small class="text-muted">{{ post.date_respo|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="get" >
                 
-                    <input type="submit" {% if post.Student_responsibility == False %} value="Certify"{% endif %} {% if post.Student_responsibility == True %} value="Uncertify"{% endif %} name="boolrespcert"  />
-                    
+                    <input type="submit" {% if post.Student_responsibility == False %} value="Certify" {%else%} value="Uncertify"{% endif %} name="boolrespcert"  />
+           
             </form>
         </td>
-        <td>{% if post.Student_responsibility == False %} <img src="/media/red_check.png">{% endif %} {% if post.Student_responsibility == True %} <img src="/media/green_check.png">{% endif %}</td>
+        <td>{% if post.Student_responsibility == False %} <img src="/media/red_check.png"> {% else %} <img src="/media/green_check.png">{% endif %}</td>
 
         </tr>
             <tr>
-        <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
+        {%if post.student.userextended.resid_tuit_app == null %}
+            <th>Student has not uploaded Resident Tuition Application</th>
+        {%else%}
+            <td><a href="/media/{{post.student.userextended.resid_tuit_app}}" target="_blank">Open Students MVP Information sheet</a></td>
+        {%endif %}
         <td><small class="text-muted">{{ post.date_tuition|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="get" >
                 
-                    <input type="submit" {% if post.Resident_tuition_app == False %} value="Certify"{% endif %} {% if post.Resident_tuition_app == True %} value="Uncertify"{% endif %} name="booltuition"  />
+                    <input type="submit" {% if post.Resident_tuition_app == False %} value="Certify" {% else %} value="Uncertify"{% endif %} name="booltuition"  />
                     
             </form>
         </td>
-        <td>{% if post.Resident_tuition_app == False %} <img src="/media/red_check.png">{% endif %} {% if post.Resident_tuition_app == True %} <img src="/media/green_check.png">{% endif %}</td>
+        <td>{% if post.Resident_tuition_app == False %} <img src="/media/red_check.png"> {% else %} <img src="/media/green_check.png">{% endif %}</td>
 
         </tr>
    
@@ -94,26 +100,34 @@
    <!-- {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '35' %} -->
            
                 <tr> 
-                    <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
+            {%if post.student.userextended.conc_stud_sched == null %}
+                <th>Student has not uploaded MVP Information Sheet</th>
+            {%else%}
+                <td><a href="/media/{{post.student.userextended.conc_stud_sched}}" target="_blank">Open Students Concise Student Schedule</a></td>
+            {%endif %}
                     <td><small class="text-muted">{{ post.date_concise|date:"F d, Y T g:i" }}</small></td> 
                     <td>
                     <form method="get" >
-                        <input type="submit" {% if post.Concise_student_schedule == False %} value="Certify"{% endif %} {% if post.Concise_student_schedule == True %} value="Uncertify"{% endif %} name="boolconcise"  />
+                        <input type="submit" {% if post.Concise_student_schedule == False %} value="Certify"{% else %} value="Uncertify"{% endif %} name="boolconcise"/>
                      </form>
                     </td>
-                    <td>{% if post.Concise_student_schedule == False %} <img src="/media/red_check.png">{% endif %} {% if post.Concise_student_schedule == True %} <img src="/media/green_check.png">{% endif %}</td>
+                    <td>{% if post.Concise_student_schedule == False %} <img src="/media/red_check.png">{% else %} <img src="/media/green_check.png">{% endif %}</td>
 
          
                 </tr>
             <tr>
-            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            {%if post.student.userextended.star_deg_audit == null %}
+            <th>Student has not uploaded their STAR Degree Audit</th>
+            {%else%}
+            <td><a href="/media/{{post.student.userextended.star_deg_audits}}" target="_blank">Open Students STAR Degree Audit</a></td>
+            {%endif %}
             <td><small class="text-muted">{{ post.date_audit|date:"F d, Y T g:i" }}</small></td> 
             <td>
             <form method="get" >
-                        <input type="submit" {% if post.Star_degree_audit == False %} value="Certify"{% endif %} {% if post.Star_degree_audit == True %} value="Uncertify"{% endif %} name="boolaudit"  />
+                        <input type="submit" {% if post.Star_degree_audit == False %} value="Certify"{% else %} value="Uncertify"{% endif %} name="boolaudit"  />
             </form>
             </td>
-            <td>{% if post.Star_degree_audit == False %} <img src="/media/red_check.png">{% endif %} {% if post.Star_degree_audit == True %} <img src="/media/green_check.png">{% endif %}</td>
+            <td>{% if post.Star_degree_audit == False %} <img src="/media/red_check.png">{% else %} <img src="/media/green_check.png">{% endif %}</td>
 
             </tr>
     </table>

@@ -11,7 +11,7 @@
             <th>Upload</th>
           </tr>
           <tr>
-            <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
+            <td><a href="https://www.va.gov/education/how-to-apply/" target="_blank">Certificate of Eligibility</a></td>
              {% for p in certs %}
                 {%if p.student.username == user.username and p.Certificate_of_eligibility == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -25,7 +25,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
+            <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf" target="_blank">NMSU MVP Information Sheet</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.MVP_information_sheet == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -40,11 +40,11 @@
           </tr>
           <tr>
                 {%if user.userextended.chapter == '30' or user.userextended.chapter == '1606' or user.userextended.chapter == '35' %}
-                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_30_1606_1607_35_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td>
+                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_30_1606_1607_35_Student_Responsibilities.pdf" target="_blank">NMSU MVP Student Responsibilities Form</a></td>
                 {% elif user.userextended.chapter == '31' %} 
-                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_31_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
+                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_31_Student_Responsibilities.pdf" target="_blank">NMSU MVP Student Responsibilities Form</a></td> 
                 {%else%} 
-                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
+                    <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf" target="_blank">NMSU MVP Student Responsibilities Form</a></td> 
                 {%endif%}     
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Student_responsibility == True %}
@@ -59,7 +59,7 @@
             </td>
           </tr>
               <tr>
-            <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
+            <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf" target="_blank">NMSU MVP Resident Tuition Application </a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Resident_tuition_app == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -88,7 +88,7 @@
             <th>Upload</th>
           </tr>
           <tr>
-            <td><a href="https://my.nmsu.edu">Concise Student Schedule </a></td>
+            <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule </a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Concise_student_schedule == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -102,7 +102,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            <td><a href="https://degreeaudit.nmsu.edu/" target="_blank">Star Degree Audit</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Star_degree_audit == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -130,7 +130,7 @@
             <th>Upload</th>
           </tr>
           <tr>
-            <td><a href="https://my.nmsu.edu">Concise Student Schedule </a></td>
+            <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule </a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Concise_student_schedule == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -144,7 +144,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            <td><a href="https://degreeaudit.nmsu.edu/" target="_blank">Star Degree Audit</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Star_degree_audit == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -172,7 +172,7 @@
             <th>Upload</th>
           </tr>
           <tr>
-            <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
+            <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule</a></td>
            {% for p in certs %}
                 {%if p.student.username == user.username and p.Concise_student_schedule == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -187,7 +187,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            <td><a href="https://degreeaudit.nmsu.edu/" target="_blank">Star Degree Audit</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Star_degree_audit == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -215,7 +215,7 @@
             <th>Upload</th>
           </tr>
           <tr>
-            <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
+            <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Concise_student_schedule == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -229,7 +229,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            <td><a href="https://degreeaudit.nmsu.edu/" target="_blank">Star Degree Audit</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Star_degree_audit == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -257,7 +257,7 @@
             <th>Upload</th>
           </tr>
           <tr>
-            <td><a href="https://my.nmsu.edu">Concise Student Schedule </a></td>
+            <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule </a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Concise_student_schedule == True %}
                 <td><img src="/media/green_check.png"></td>
@@ -271,7 +271,7 @@
             </td>
           </tr>
           <tr>
-            <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
+            <td><a href="https://degreeaudit.nmsu.edu/" target="_blank">Star Degree Audit</a></td>
             {% for p in certs %}
                 {%if p.student.username == user.username and p.Star_degree_audit == True %}
                 <td><img src="/media/green_check.png"></td>
