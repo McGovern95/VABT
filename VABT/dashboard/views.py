@@ -52,7 +52,7 @@ class UserPostListView(ListView):
         studentcert = Post.objects.get(student=userdefault)
         date = timezone.now()
 
-        ##HERE IAN. WE DID ITTTT
+        #buttons for certification 
         if(request.GET.get('boolcoecert')):
             studentcert.date_cert = date
             if(studentcert.Certificate_of_eligibility == False):
@@ -261,27 +261,28 @@ class UserPostListView(ListView):
                     headers = {'Reply-To': 'contact_email@gmail.com' }
                     )
                 email.send()   
-                messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
+                messages.success(request, f'Your Email Message Has Been Sent t00o '+ userdefault.first_name) 
                 
         elif(userextended.phone_notifications == False):
-            if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
-                email = EmailMessage(
-                'VABT Notification ',
-                'You are now Cetified! \n',
-                'VABT Notifications' +'<sender@gmail.com>',
-                [userextended.phone_number +'@vtext.com'],
-                headers = {'Reply-To': 'contact_email@gmail.com' }
-                )
-            else:
-                email = EmailMessage(
-                'VABT Notification',
-                'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
-                'VABT Notifications' +'<sender@gmail.com>',
-                [userdefault.email],
-                headers = {'Reply-To': 'contact_email@gmail.com' }
-                )
-            email.send()   
-            messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
+            if(request.GET.get('certbtn')):
+                if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                    email = EmailMessage(
+                    'VABT Notification ',
+                    'You are now Cetified! \n',
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userextended.phone_number +'@vtext.com'],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                else:
+                    email = EmailMessage(
+                    'VABT Notification',
+                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                    'VABT Notifications' +'<sender@gmail.com>',
+                    [userdefault.email],
+                    headers = {'Reply-To': 'contact_email@gmail.com' }
+                    )
+                email.send()   
+                messages.success(request, f'Your Email Message Has Been Sent to00 '+ userdefault.first_name) 
 
 
         return super(UserPostListView, self).get(request, *args, **kwargs)

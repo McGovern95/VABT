@@ -22,8 +22,7 @@ def register(request):
             user.userextended.save()
             user.refresh_from_db()
             user.save()
-            print(user)
-            #owner = User.o.get(id=student_id)
+
             Post.objects.create(title="Checklist for"+user.last_name,comment="Default", student = user)
 
             request.user.is_staff = False
