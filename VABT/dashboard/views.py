@@ -166,63 +166,117 @@ class UserPostListView(ListView):
         if(userextended.phone_notifications == True):
              if(request.GET.get('certbtn')):
                 if(userextended.carrier == 'Verizon'):
+                    if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                        text = EmailMessage(
+                        'VABT Notification ',
+                        'You are now Cetified! \n',
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vtext.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    else:
+                        text = EmailMessage(
+                        'VABT Notification ',
+                        'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vtext.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'AT&T'):
+                    if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                        text = EmailMessage(
+                        'VABT Notification ',
+                        'You are now Cetified! \n',
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vtext.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    else:
+                        text = EmailMessage(
+                        'VABT Notification',
+                        'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@txt.att.net'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'Sprint'):
+                    if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                        text = EmailMessage(
+                        'VABT Notification ',
+                        'You are now Cetified! \n',
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vtext.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    else:
+                        text = EmailMessage(
+                        'VABT Notification',
+                        'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@messaging.sprintpcs.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'T-Mobile'):
+                    if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                        text = EmailMessage(
+                        'VABT Notification ',
+                        'You are now Cetified! \n',
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vtext.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    else:
+                        text = EmailMessage(
+                        'VABT Notification',
+                        'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@tmomail.net'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+                elif(userextended.carrier == 'Virgin'):
+                    if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                        text = EmailMessage(
+                        'VABT Notification ',
+                        'You are now Cetified! \n',
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vtext.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    else:
+                         text = EmailMessage(
+                        'VABT Notification',
+                        'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                        'VABT Notifications' +'<sender@gmail.com>',
+                        [userextended.phone_number +'@vmobl.com'],
+                        headers = {'Reply-To': 'contact_email@gmail.com' }
+                        )
+                    text.send()
+                    messages.success(request, f'Your Phone Message Has Been Sent')
+
+                if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
                     text = EmailMessage(
                     'VABT Notification ',
-                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
+                    'You are now Cetified! \n',
                     'VABT Notifications' +'<sender@gmail.com>',
                     [userextended.phone_number +'@vtext.com'],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
                     )
-                    text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
-                elif(userextended.carrier == 'AT&T'):
-                    text = EmailMessage(
+                else:
+                    email = EmailMessage(
                     'VABT Notification',
                     'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
                     'VABT Notifications' +'<sender@gmail.com>',
-                    [userextended.phone_number +'@txt.att.net'],
+                    [userdefault.email],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
                     )
-                    text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
-                elif(userextended.carrier == 'Sprint'):
-                    text = EmailMessage(
-                    'VABT Notification',
-                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
-                    'VABT Notifications' +'<sender@gmail.com>',
-                    [userextended.phone_number +'@messaging.sprintpcs.com'],
-                    headers = {'Reply-To': 'contact_email@gmail.com' }
-                    )
-                    text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
-                elif(userextended.carrier == 'T-Mobile'):
-                    text = EmailMessage(
-                    'VABT Notification',
-                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
-                    'VABT Notifications' +'<sender@gmail.com>',
-                    [userextended.phone_number +'@tmomail.net'],
-                    headers = {'Reply-To': 'contact_email@gmail.com' }
-                    )
-                    text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
-                elif(userextended.carrier == 'Virgin'):
-                     text = EmailMessage(
-                    'VABT Notification',
-                    'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
-                    'VABT Notifications' +'<sender@gmail.com>',
-                    [userextended.phone_number +'@vmobl.com'],
-                    headers = {'Reply-To': 'contact_email@gmail.com' }
-                    )
-                     text.send()
-                     messages.success(request, f'Your Phone Message Has Been Sent')
-
-                email = EmailMessage(
-                'VABT Notification',
-                'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
-                'VABT Notifications' +'<sender@gmail.com>',
-                [userdefault.email],
-                headers = {'Reply-To': 'contact_email@gmail.com' }
-                )
                 email.send()   
                 messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
                 
