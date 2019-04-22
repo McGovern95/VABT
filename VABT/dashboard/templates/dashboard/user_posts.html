@@ -41,7 +41,7 @@
             <td>
                 <form method="get">
 
-                    <input type="submit" {% if post.Certificate_of_eligibility= =False %} value="Certify" {% endif %} {% if post.Certificate_of_eligibility= =True %} value="Uncertify" {% endif %} name="boolcoecert" />
+                    <input type="submit" {% if post.Certificate_of_eligibility == False %} value="Certify" {% endif %} {% if post.Certificate_of_eligibility == True %} value="Uncertify" {% endif %} name="boolcoecert" />
 
                 </form>
             </td>
