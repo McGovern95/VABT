@@ -20,30 +20,36 @@
                 
         </article>
   
-        <table style="width:100%">
+        <table class="table" style="width:100%">
         <caption>Last Certified by:</caption>
-        <tr>
-            <th>Forms</th>
-            <th>Date</th> 
-            <th>Action</th>
-            <th>Status</th>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">{{post.student.first_name}} Forms</th>
+                <th scope="col">Edit Date</th>
+                <th scope="col">Action</th>
+                <th scope="col">Status</th>
 
-        </tr>
-            <tr> 
-            <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
-            <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-            <td><form method="get">
-               
-                
-                    <input type="submit" {% if post.Certificate_of_eligibility == False %} value="Certify"{% endif %} {% if post.Certificate_of_eligibility == True %} value="Uncertify"{% endif %} name="boolcoecert"  />
-                    
-            </form>
+            </tr>
+        </thead>
+        <tr>
+            {%if post.student.userextended.cert_of_elig == null %}
+            <th>Student has not uploaded Certificate of Eligibility</th>
+            {%else%}
+            <td><a href="/media/{{post.student.userextended.cert_of_elig}}" target="_blank">Open Students Certificate of Eligibilty</a></td>
+            {%endif %}
+            <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td>
+            <td>
+                <form method="get">
+
+                    <input type="submit" {% if post.Certificate_of_eligibility= =False %} value="Certify" {% endif %} {% if post.Certificate_of_eligibility= =True %} value="Uncertify" {% endif %} name="boolcoecert" />
+
+                </form>
             </td>
             <td>{% if post.Certificate_of_eligibility == False %} <img src="/media/red_check.png">{% endif %} {% if post.Certificate_of_eligibility == True %} <img src="/media/green_check.png">{% endif %}</td>
-            </tr>
+        </tr>
         <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
-        <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+        <td><small class="text-muted">{{ post.date_info|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="get">
                 
                     <input type="submit" {% if post.MVP_information_sheet == False %} value="Certify"{% endif %} {% if post.MVP_information_sheet == True %} value="Uncertify"{% endif %} name="boolinfocert"  />
@@ -61,7 +67,7 @@
                 {%else%} 
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%endif%}     
-        <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+        <td><small class="text-muted">{{ post.date_respo|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="get" >
                 
                     <input type="submit" {% if post.Student_responsibility == False %} value="Certify"{% endif %} {% if post.Student_responsibility == True %} value="Uncertify"{% endif %} name="boolrespcert"  />
@@ -73,7 +79,7 @@
         </tr>
             <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
-        <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+        <td><small class="text-muted">{{ post.date_tuition|date:"F d, Y T g:i" }}</small></td> 
         <td><form method="get" >
                 
                     <input type="submit" {% if post.Resident_tuition_app == False %} value="Certify"{% endif %} {% if post.Resident_tuition_app == True %} value="Uncertify"{% endif %} name="booltuition"  />
@@ -89,7 +95,7 @@
            
                 <tr> 
                     <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
-                    <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+                    <td><small class="text-muted">{{ post.date_concise|date:"F d, Y T g:i" }}</small></td> 
                     <td>
                     <form method="get" >
                         <input type="submit" {% if post.Concise_student_schedule == False %} value="Certify"{% endif %} {% if post.Concise_student_schedule == True %} value="Uncertify"{% endif %} name="boolconcise"  />
@@ -101,7 +107,7 @@
                 </tr>
             <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
-            <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+            <td><small class="text-muted">{{ post.date_audit|date:"F d, Y T g:i" }}</small></td> 
             <td>
             <form method="get" >
                         <input type="submit" {% if post.Star_degree_audit == False %} value="Certify"{% endif %} {% if post.Star_degree_audit == True %} value="Uncertify"{% endif %} name="boolaudit"  />
