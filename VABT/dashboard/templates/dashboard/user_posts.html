@@ -20,15 +20,17 @@
                 
         </article>
   
-        <table style="width:100%">
+        <table class="table" style="width:100%">
         <caption>Last Certified by:</caption>
+        <thead class="thead-light">
         <tr>
-            <th>Forms</th>
-            <th>Edit Date</th> 
-            <th>Action</th>
-            <th>Status</th>
+            <th scope="col">Forms</th>
+            <th scope="col">Edit Date</th> 
+            <th scope="col">Action</th>
+            <th scope="col">Status</th>
 
         </tr>
+        </thead>
             <tr> 
             <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
             <td><small class="text-muted">{{ post.date_cert|date:"F d, Y T g:i" }}</small></td> 
