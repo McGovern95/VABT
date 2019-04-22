@@ -23,18 +23,21 @@
         <table style="width:100%">
         <caption>Last Certified by:</caption>
         <tr>
-            <th>Forms</th>
+            <th>{{post.student.first_name}} Forms</th>
             <th>Date</th> 
             <th>Action</th>
             <th>Status</th>
 
         </tr>
             <tr> 
-            <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
+            {%if post.student.userextended.cert_of_elig == null %}
+                 <th>Student has not uploaded Certificate of Eligibility</th> 
+            {%else%}
+                 <td><a href="/media/{{post.student.userextended.cert_of_elig}}" target="_blank">Open Students Certificate of Eligibilty</a></td>
+            {%endif %}
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
             <td><form method="get">
                
-                
                     <input type="submit" {% if post.Certificate_of_eligibility == False %} value="Certify"{% endif %} {% if post.Certificate_of_eligibility == True %} value="Uncertify"{% endif %} name="boolcoecert"  />
                     
             </form>

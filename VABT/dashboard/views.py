@@ -59,9 +59,8 @@ class UserPostListView(ListView):
         userdefault = User.objects.get(username = kwargs.get('username'))
         userextended = UserExtended.objects.get(user=userdefault)
         studentcert = Post.objects.get(student=userdefault)
-        
 
-        ##HERE IAN. WE DID ITTTT
+        ##For certification
         if(request.GET.get('boolcoecert')):
             if(studentcert.Certificate_of_eligibility == False):
                studentcert.Certificate_of_eligibility = True
@@ -355,6 +354,12 @@ def student_home(request):
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
+
+#def elegfile(request):
+
+
+
+
 
 
 
