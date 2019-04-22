@@ -26,20 +26,6 @@ def home(request):
         return render(request, 'dashboard/home.html')
 
 #for x in User
-posts =[
-    {
-        'author':'Ian Navarro',
-        'title': 'Blog Post 1',
-        'content': 'First post!',
-        'date_posted': 'March 5th, 2019'
-        },
-        {
-        'author':'Kyla Navarro',
-        'title': 'Blog Post 2',
-        'content': '2nd post!',
-        'date_posted': 'March 6th, 2019'
-        }
-    ]
 
 
 class PostListView(ListView):
@@ -262,7 +248,7 @@ class UserPostListView(ListView):
                     messages.success(request, f'Your Phone Message Has Been Sent')
 
                 if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
-                    text = EmailMessage(
+                    email = EmailMessage(
                     'VABT Notification ',
                     'You are now Cetified! \n',
                     'VABT Notifications' +'<sender@gmail.com>',
@@ -281,7 +267,15 @@ class UserPostListView(ListView):
                 messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
                 
         elif(userextended.phone_notifications == False):
-            if(request.GET.get('certbtn')):
+            if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
+                email = EmailMessage(
+                'VABT Notification ',
+                'You are now Cetified! \n',
+                'VABT Notifications' +'<sender@gmail.com>',
+                [userextended.phone_number +'@vtext.com'],
+                headers = {'Reply-To': 'contact_email@gmail.com' }
+                )
+            else:
                 email = EmailMessage(
                 'VABT Notification',
                 'Please turn in the following forms: \n'+message1+message2+message3+message4+message5+message6,
@@ -289,8 +283,8 @@ class UserPostListView(ListView):
                 [userdefault.email],
                 headers = {'Reply-To': 'contact_email@gmail.com' }
                 )
-                email.send()                                                             
-                messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
+            email.send()   
+            messages.success(request, f'Your Email Message Has Been Sent to '+ userdefault.first_name) 
 
 
         return super(UserPostListView, self).get(request, *args, **kwargs)

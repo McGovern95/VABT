@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% block submit_buttons_bottom %}
+
 <script> function myFunc() { alert("You are about to certify this form") }</script>
 {% for post in posts %}
 {% if post.student.username == view.kwargs.username %}
@@ -111,9 +112,6 @@
             </tr>
     </table>
 {% endif %}
-
-
-
     
 {% endif %}
 {% endfor %}
