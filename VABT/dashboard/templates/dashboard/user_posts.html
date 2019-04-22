@@ -24,31 +24,33 @@
         <tr>
             <th>Forms</th>
             <th>Date</th> 
-            <th>Certify</th>
-            </tr>
+            <th>Action</th>
+            <th>Status</th>
+
+        </tr>
             <tr> 
             <td><a href="https://www.va.gov/education/how-to-apply/">Certificate of Eligibility</a></td>
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-            <td><form method="get" action="#" enctype="multipart/form-data">
+            <td><form method="get">
                
-  
-                    <input type="submit" value="clicked!" name="boolcoecert"  />
+                
+                    <input type="submit" {% if post.Certificate_of_eligibility == False %} value="Certify"{% endif %} {% if post.Certificate_of_eligibility == True %} value="Uncertify"{% endif %} name="boolcoecert"  />
                     
             </form>
             </td>
+            <td>{% if post.Certificate_of_eligibility == False %} <img src="/media/red_check.png">{% endif %} {% if post.Certificate_of_eligibility == True %} <img src="/media/green_check.png">{% endif %}</td>
             </tr>
         <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf">NMSU MVP Information Sheet</a></td>
         <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-        <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <label class="switch">
-                <input type="checkbox" {% if post.MVP_information_sheet == False %} unchecked {% endif %} {% if post.MVP_information_sheet == True %} checked {% endif %}>
-                <span class="slider"></span>
-            </label>
-            </form> 
+        <td><form method="get">
+                
+                    <input type="submit" {% if post.MVP_information_sheet == False %} value="Certify"{% endif %} {% if post.MVP_information_sheet == True %} value="Uncertify"{% endif %} name="boolinfocert"  />
+                    
+            </form>
         </td>
+        <td>{% if post.MVP_information_sheet == False %} <img src="/media/red_check.png">{% endif %} {% if post.MVP_information_sheet == True %} <img src="/media/green_check.png">{% endif %}</td>
+
         </tr>
         <tr>
                 {%if post.student.userextended.chapter == '30' or post.student.userextended.chapter == '1606' or post.student.userextended.chapter == '35' %}
@@ -59,65 +61,53 @@
                     <td><a href="https://mvp.nmsu.edu/files/2018/06/Ch_33_Student_Responsibilities.pdf">NMSU MVP Student Responsibilities Form</a></td> 
                 {%endif%}     
         <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-        <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <label class="switch">
-                <input type="checkbox" {% if post.Student_responsibility == False %} unchecked {% endif %} {% if post.Student_responsibility == True %} checked {% endif %}>
-                <span class="slider"></span>
-            </label>
+        <td><form method="get" >
+                
+                    <input type="submit" {% if post.Student_responsibility == False %} value="Certify"{% endif %} {% if post.Student_responsibility == True %} value="Uncertify"{% endif %} name="boolrespcert"  />
+                    
             </form>
         </td>
+        <td>{% if post.Student_responsibility == False %} <img src="/media/red_check.png">{% endif %} {% if post.Student_responsibility == True %} <img src="/media/green_check.png">{% endif %}</td>
+
         </tr>
             <tr>
         <td><a href="https://mvp.nmsu.edu/files/2018/08/MVP_Waiver.pdf">NMSU MVP Resident Tuition Application </a></td>
         <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-        <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <label class="switch">
-                <input type="checkbox" {% if post.Resident_tuition_app == False %} unchecked {% endif %} {% if  post.Resident_tuition_app == True %} checked {% endif %}>
-                <span class="slider"></span>
-            </label>
+        <td><form method="get" >
+                
+                    <input type="submit" {% if post.Resident_tuition_app == False %} value="Certify"{% endif %} {% if post.Resident_tuition_app == True %} value="Uncertify"{% endif %} name="booltuition"  />
+                    
             </form>
         </td>
+        <td>{% if post.Resident_tuition_app == False %} <img src="/media/red_check.png">{% endif %} {% if post.Resident_tuition_app == True %} <img src="/media/green_check.png">{% endif %}</td>
+
         </tr>
-    </table>
+   
 
-    {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '35' %}
-    <table style="width:100%">
-            <caption>Last Certified by:</caption>
-            <tr>
-                <th>Forms</th>
-                <th>Date</th> 
-                <th>Certify</th>
-                </tr>
+   <!-- {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '35' %} -->
+           
                 <tr> 
-                <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
-                <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-                <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
-                    {{ block.super }}
-  
-                    <label class="switch" action="">
-                        <input type="checkbox" value="clicked!" name="_make-unique" {% if post.Student_responsibility == False %} unchecked {% endif %} {% if post.Student_responsibility == True %} checked {% endif %}>
+                    <td><a href="https://my.nmsu.edu">Concise Student Schedule</a></td>
+                    <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
+                    <td>
+                    <form method="get" >
+                        <input type="submit" {% if post.Concise_student_schedule == False %} value="Certify"{% endif %} {% if post.Concise_student_schedule == True %} value="Uncertify"{% endif %} name="boolconcise"  />
+                     </form>
+                    </td>
+                    <td>{% if post.Concise_student_schedule == False %} <img src="/media/red_check.png">{% endif %} {% if post.Concise_student_schedule == True %} <img src="/media/green_check.png">{% endif %}</td>
 
-                        <span class="slider"></span>
-                    </label>
-                    </form>
-                </td>
+         
                 </tr>
             <tr>
             <td><a href="https://degreeaudit.nmsu.edu/">Star Degree Audit</a></td>
             <td><small class="text-muted">{{ post.date_began|date:"F d, Y T g:i" }}</small></td> 
-            <td><form method="post" onclick="myFunc()" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <label class="switch">
-                    <input type="checkbox" {% if post.Star_degree_audit == False %} unchecked {% endif %} {% if post.Star_degree_audit == True %} checked {% endif %}>
-                    <span class="slider"></span>
-                </label>
-                </form> 
+            <td>
+            <form method="get" >
+                        <input type="submit" {% if post.Star_degree_audit == False %} value="Certify"{% endif %} {% if post.Star_degree_audit == True %} value="Uncertify"{% endif %} name="boolaudit"  />
+            </form>
             </td>
+            <td>{% if post.Star_degree_audit == False %} <img src="/media/red_check.png">{% endif %} {% if post.Star_degree_audit == True %} <img src="/media/green_check.png">{% endif %}</td>
+
             </tr>
     </table>
 {% endif %}

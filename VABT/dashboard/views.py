@@ -16,7 +16,7 @@ from django.views.generic import (
         )
 from .models import Post
 from .models import User
-from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm, Cert1Form
+from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 from django.core.mail import EmailMessage
 #from django.http import HttpResponse
 #Create your views here.
@@ -80,14 +80,61 @@ class UserPostListView(ListView):
             if(studentcert.Certificate_of_eligibility == False):
                studentcert.Certificate_of_eligibility = True
                studentcert.save()
-               messages.success(request, f' set to True')
+              # messages.success(request, f' set to True')
             elif(studentcert.Certificate_of_eligibility == True):
                 studentcert.Certificate_of_eligibility = False
                 studentcert.save()
-                messages.success(request, f' set to False')
+               # messages.success(request, f' set to False')
 
-        
+        if(request.GET.get('boolinfocert')):
+            if(studentcert.MVP_information_sheet == False):
+               studentcert.MVP_information_sheet = True
+               studentcert.save()
+              # messages.success(request, f' set to True')
+            elif(studentcert.MVP_information_sheet == True):
+                studentcert.MVP_information_sheet = False
+                studentcert.save()
+               # messages.success(request, f' set to False')
 
+        if(request.GET.get('boolrespcert')):
+            if(studentcert.Student_responsibility == False):
+               studentcert.Student_responsibility = True
+               studentcert.save()
+              # messages.success(request, f' set to True')
+            elif(studentcert.Student_responsibility == True):
+                studentcert.Student_responsibility = False
+                studentcert.save()
+               # messages.success(request, f' set to False')
+
+        if(request.GET.get('booltuition')):
+            if(studentcert.Resident_tuition_app == False):
+               studentcert.Resident_tuition_app = True
+               studentcert.save()
+              # messages.success(request, f' set to True')
+            elif(studentcert.Resident_tuition_app == True):
+                studentcert.Resident_tuition_app = False
+                studentcert.save()
+               # messages.success(request, f' set to False')
+
+        if(request.GET.get('boolconcise')):
+            if(studentcert.Concise_student_schedule == False):
+               studentcert.Concise_student_schedule = True
+               studentcert.save()
+              # messages.success(request, f' set to True')
+            elif(studentcert.Concise_student_schedule == True):
+                studentcert.Concise_student_schedule = False
+                studentcert.save()
+               # messages.success(request, f' set to False')
+
+        if(request.GET.get('boolaudit')):
+            if(studentcert.Star_degree_audit == False):
+               studentcert.Star_degree_audit = True
+               studentcert.save()
+              # messages.success(request, f' set to True')
+            elif(studentcert.Star_degree_audit == True):
+                studentcert.Star_degree_audit = False
+                studentcert.save()
+               # messages.success(request, f' set to False')
 
         if(studentcert.Certificate_of_eligibility == False ):
             message1 = "Certificate of eligibility (COE) \n"
