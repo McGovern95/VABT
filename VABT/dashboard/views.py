@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user
+from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.models import User
 from users.models import Profile
@@ -43,25 +44,17 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(student=user)
     
-    def response_change(self, request, obj):
-        if "_make-unique" in request.POST:
-            print("Hello world")
-    #        matching_names_except_this = self.get_queryset(request).filter(name=obj.name).exclude(ProcessLookupError=obj.id)
-    #        matching_names_except_this.delete()
-    #        obj.Certficate_of_eligibility = True
-    #        obj.save()
-    #        self.message_user(request, "Certificate of eligibility changed")
-    #        return HttpResponseRedirect(".")
-        return super().response_change(request, obj)
-
+    
     #need to get the kwarg stuff for the email
     def get(self, request, *args, **kwargs):
         userdefault = User.objects.get(username = kwargs.get('username'))
         userextended = UserExtended.objects.get(user=userdefault)
         studentcert = Post.objects.get(student=userdefault)
+        date = timezone.now()
 
-        ##For certification
+        ##HERE IAN. WE DID ITTTT
         if(request.GET.get('boolcoecert')):
+            studentcert.date_cert = date
             if(studentcert.Certificate_of_eligibility == False):
                studentcert.Certificate_of_eligibility = True
                studentcert.save()
@@ -72,6 +65,7 @@ class UserPostListView(ListView):
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolinfocert')):
+            studentcert.date_info = date
             if(studentcert.MVP_information_sheet == False):
                studentcert.MVP_information_sheet = True
                studentcert.save()
@@ -82,6 +76,7 @@ class UserPostListView(ListView):
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolrespcert')):
+            studentcert.date_respo = date
             if(studentcert.Student_responsibility == False):
                studentcert.Student_responsibility = True
                studentcert.save()
@@ -92,6 +87,7 @@ class UserPostListView(ListView):
                # messages.success(request, f' set to False')
 
         if(request.GET.get('booltuition')):
+            studentcert.date_tuition = date
             if(studentcert.Resident_tuition_app == False):
                studentcert.Resident_tuition_app = True
                studentcert.save()
@@ -102,6 +98,7 @@ class UserPostListView(ListView):
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolconcise')):
+            studentcert.date_concise = date
             if(studentcert.Concise_student_schedule == False):
                studentcert.Concise_student_schedule = True
                studentcert.save()
@@ -112,6 +109,7 @@ class UserPostListView(ListView):
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolaudit')):
+            studentcert.date_audit = date
             if(studentcert.Star_degree_audit == False):
                studentcert.Star_degree_audit = True
                studentcert.save()
@@ -354,12 +352,6 @@ def student_home(request):
 
 def contact(request):
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
-
-#def elegfile(request):
-
-
-
-
 
 
 
