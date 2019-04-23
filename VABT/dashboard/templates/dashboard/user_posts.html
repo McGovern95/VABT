@@ -32,11 +32,9 @@
             </tr>
         </thead>
         <tr>
-             
-            {%if post.student.userextended.cert_of_elig == null %}
-                <th>Student has not uploaded Certificate of Eligibility</th> 
-            {%elif post.students.userextended.cert_of_elig == blank%}
-                <th>Student has not uploaded Certificate of Eligibility</th> 
+            
+            {%if post.student.userextended.cert_of_elig == False %}
+                <th>Student has not uploaded Certificate of Eligibility</th>
             {%else%}
                 <td><a href="/media/{{post.student.userextended.cert_of_elig}}" target="_blank">Open Students Certificate of Eligibilty</a></td>
             {%endif %}
@@ -122,7 +120,7 @@
             {%if post.student.userextended.star_deg_audit == null %}
             <th>Student has not uploaded their STAR Degree Audit</th>
             {%else%}
-            <td><a href="/media/{{post.student.userextended.star_deg_audit}}" target="_blank">Open Students STAR Degree Audit</a></td>
+            <td><a href="/media/{{post.student.userextended.star_deg_audits}}" target="_blank">Open Students STAR Degree Audit</a></td>
             {%endif %}
             <td><small class="text-muted">{{ post.date_audit|date:"F d, Y T g:i" }}</small></td> 
             <td>
