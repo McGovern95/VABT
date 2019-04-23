@@ -8,6 +8,7 @@ from users.models import UserExtended
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import (
         ListView,
         DetailView,
@@ -44,7 +45,6 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(student=user)
     
-    
     #need to get the kwarg stuff for the email
     def get(self, request, *args, **kwargs):
         userdefault = User.objects.get(username = kwargs.get('username'))
@@ -52,7 +52,7 @@ class UserPostListView(ListView):
         studentcert = Post.objects.get(student=userdefault)
         date = timezone.now()
 
-        #buttons for certification 
+   #buttons for certification 
         if(request.GET.get('boolcoecert')):
             studentcert.date_cert = date
             if(studentcert.Certificate_of_eligibility == False):
@@ -307,29 +307,15 @@ def student_home(request):
         resid_form = ResidTuitAppForm(request.POST, request.FILES, instance=request.user.userextended)
         conc_form = ConcStudSchedForm(request.POST, request.FILES, instance=request.user.userextended)
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
-        if cert_form.is_valid() == True:
-           cert_form.save()
-           messages.success(request, f'Your Certificate of Eligibility has been uploaded!')
-           
-        if mvp_form.is_valid() == True:
+
+        if cert_form.is_valid() and mvp_form.is_valid() and stud_form.is_valid() and resid_form.is_valid() and conc_form.is_valid() and star_form.is_valid() == True:     
+            cert_form.save()
             mvp_form.save()
-            messages.success(request, f'Your MVP Information Sheet has been uploaded!')
-            
-        if stud_form.is_valid() == True:
-            stud_form.save()
-            messages.success(request, f'Your Student Responsibilites Form has been uploaded!')
-            
-        if resid_form.is_valid() == True:
+            stud_form.save()       
             resid_form.save()
-            messages.success(request, f'Your Resident Tuition Application has been uploaded!')
-            
-        if conc_form.is_valid() == True:
             conc_form.save()
-            messages.success(request, f'Your Concise Student Schedule has been uploaded!')
-            
-        if star_form.is_valid() == True:
             star_form.save()
-            messages.success(request, f'Your STAR Degree Audit has been uploaded!')
+            messages.success(request, f'Your File(s) has been uploaded!')
     else:
         cert_form = CertForm(instance=request.user.userextended)
         mvp_form = MVPForm(instance=request.user.userextended)

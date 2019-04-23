@@ -33,7 +33,7 @@
         </thead>
         <tr>
             
-            {%if post.student.userextended.cert_of_elig == False %}
+            {%if not post.student.userextended.cert_of_elig  %}
                 <th>Student has not uploaded Certificate of Eligibility</th>
             {%else%}
                 <td><a href="/media/{{post.student.userextended.cert_of_elig}}" target="_blank">Open Students Certificate of Eligibilty</a></td>
@@ -49,7 +49,7 @@
             <td>{% if post.Certificate_of_eligibility == False %} <img src="/media/red_check.png">{% else %} <img src="/media/green_check.png">{% endif %}</td>
         </tr>
         <tr>
-        {%if post.student.userextended.MVP_info_sheet == null %}
+        {%if not post.student.userextended.MVP_info_sheet %}
             <th>Student has not uploaded MVP Information Sheet</th>
         {%else%}
             <td><a href="/media/{{post.student.userextended.MVP_info_sheet}}" target="_blank">Open Students MVP Information sheet</a></td>
@@ -65,7 +65,7 @@
 
         </tr>
         <tr>
-            {%if post.student.userextended.stud_respon == null %}
+            {%if not post.student.userextended.stud_respon %}
                 <th>Student has not uploaded Student Responsibilty sheet</th>
             {%else%}
                 <td><a href="/media/{{post.student.userextended.stud_respon}}" target="_blank">Open Students Responsibility Sheet</a></td>
@@ -81,7 +81,7 @@
 
         </tr>
             <tr>
-        {%if post.student.userextended.resid_tuit_app == null %}
+        {%if not post.student.userextended.resid_tuit_app %}
             <th>Student has not uploaded Resident Tuition Application</th>
         {%else%}
             <td><a href="/media/{{post.student.userextended.resid_tuit_app}}" target="_blank">Open Students MVP Information sheet</a></td>
@@ -101,7 +101,7 @@
    <!-- {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '35' %} -->
            
                 <tr> 
-            {%if post.student.userextended.conc_stud_sched == null %}
+            {%if not post.student.userextended.conc_stud_sched %}
                 <th>Student has not uploaded MVP Information Sheet</th>
             {%else%}
                 <td><a href="/media/{{post.student.userextended.conc_stud_sched}}" target="_blank">Open Students Concise Student Schedule</a></td>
@@ -117,7 +117,7 @@
          
                 </tr>
             <tr>
-            {%if post.student.userextended.star_deg_audit == null %}
+            {%if not post.student.userextended.star_deg_audit %}
             <th>Student has not uploaded their STAR Degree Audit</th>
             {%else%}
             <td><a href="/media/{{post.student.userextended.star_deg_audits}}" target="_blank">Open Students STAR Degree Audit</a></td>
