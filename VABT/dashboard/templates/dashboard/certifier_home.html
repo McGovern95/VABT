@@ -27,10 +27,10 @@
                         <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                         <div class="media-body">
                             <div class="article-metadata">
-                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
-                                <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
+         
                             </div>
-                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
+                                <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
                     </article>
                 {% endif %}
@@ -44,10 +44,10 @@
                         <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                         <div class="media-body">
                             <div class="article-metadata">
-                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
-                                <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
+         
                             </div>
-                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
+                                <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
                     </article>
                 {% endif %}
@@ -62,11 +62,10 @@
                     <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                     <div class="media-body">
                         <div class="article-metadata">
-                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
-                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
+                            </div>
+                                <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
-                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
-                    </div>
                 </article>
                 {% endif %}
             {% endfor %} 
@@ -79,11 +78,10 @@
                     <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                     <div class="media-body">
                         <div class="article-metadata">
-                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
-                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
+                            </div>
+                                <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
-                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
-                    </div>
                 </article>
                 {% endif %}
             {% endfor %} 
@@ -95,11 +93,10 @@
                     <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                     <div class="media-body">
                         <div class="article-metadata">
-                            <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }}</a>
-                            <a class="mr-0" href="">{{ post.student.first_name }}</a>
+                                <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
+                            </div>
+                                <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
                         </div>
-                                <a class="mr-2" href="">Chapter-{{ post.student.userextended.chapter }}</a>
-                    </div>
                 </article>
                 {% endif %}
             {% endfor %} 
