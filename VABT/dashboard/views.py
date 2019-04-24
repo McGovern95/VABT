@@ -57,10 +57,14 @@ class UserPostListView(ListView):
             studentcert.date_cert = date
             if(studentcert.Certificate_of_eligibility == False):
                studentcert.Certificate_of_eligibility = True
+               if studentcert.progress != 6:
+                   studentcert.progress += 1
                studentcert.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Certificate_of_eligibility == True):
                 studentcert.Certificate_of_eligibility = False
+                if studentcert.progress != 0:
+                   studentcert.progress -= 1
                 studentcert.save()
                # messages.success(request, f' set to False')
 
@@ -68,10 +72,14 @@ class UserPostListView(ListView):
             studentcert.date_info = date
             if(studentcert.MVP_information_sheet == False):
                studentcert.MVP_information_sheet = True
+               if studentcert.progress != 6:
+                   studentcert.progress += 1
                studentcert.save()
               # messages.success(request, f' set to True')
             elif(studentcert.MVP_information_sheet == True):
                 studentcert.MVP_information_sheet = False
+                if studentcert.progress != 0:
+                   studentcert.progress -= 1
                 studentcert.save()
                # messages.success(request, f' set to False')
 
@@ -79,10 +87,15 @@ class UserPostListView(ListView):
             studentcert.date_respo = date
             if(studentcert.Student_responsibility == False):
                studentcert.Student_responsibility = True
+               if studentcert.progress != 6:
+                   studentcert.progress += 1
                studentcert.save()
+
               # messages.success(request, f' set to True')
             elif(studentcert.Student_responsibility == True):
                 studentcert.Student_responsibility = False
+                if studentcert.progress != 0:
+                   studentcert.progress -= 1
                 studentcert.save()
                # messages.success(request, f' set to False')
 
@@ -90,10 +103,14 @@ class UserPostListView(ListView):
             studentcert.date_tuition = date
             if(studentcert.Resident_tuition_app == False):
                studentcert.Resident_tuition_app = True
+               if studentcert.progress != 6:
+                   studentcert.progress += 1
                studentcert.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Resident_tuition_app == True):
                 studentcert.Resident_tuition_app = False
+                if studentcert.progress != 0:
+                   studentcert.progress -= 1
                 studentcert.save()
                # messages.success(request, f' set to False')
 
@@ -101,10 +118,14 @@ class UserPostListView(ListView):
             studentcert.date_concise = date
             if(studentcert.Concise_student_schedule == False):
                studentcert.Concise_student_schedule = True
+               if studentcert.progress != 6:
+                   studentcert.progress += 1
                studentcert.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Concise_student_schedule == True):
                 studentcert.Concise_student_schedule = False
+                if studentcert.progress != 0:
+                   studentcert.progress -= 1
                 studentcert.save()
                # messages.success(request, f' set to False')
 
@@ -112,10 +133,14 @@ class UserPostListView(ListView):
             studentcert.date_audit = date
             if(studentcert.Star_degree_audit == False):
                studentcert.Star_degree_audit = True
+               if studentcert.progress != 6:
+                   studentcert.progress += 1
                studentcert.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Star_degree_audit == True):
                 studentcert.Star_degree_audit = False
+                if studentcert.progress != 0:
+                   studentcert.progress -= 1
                 studentcert.save()
                # messages.success(request, f' set to False')
 
