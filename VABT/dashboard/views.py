@@ -166,7 +166,7 @@ class UserPostListView(ListView):
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
+                    messages.success(request, f'A Text (SMS) Notification Has Been Sent to '+ userdefault.first_name)
                 elif(userextended.carrier == 'AT&T'):
                     if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
                         text = EmailMessage(
@@ -185,7 +185,7 @@ class UserPostListView(ListView):
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
+                    messages.success(request, f'A Text (SMS) Notification Has Been Sent to '+ userdefault.first_name)
                 elif(userextended.carrier == 'Sprint'):
                     if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
                         text = EmailMessage(
@@ -204,7 +204,7 @@ class UserPostListView(ListView):
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
+                    messages.success(request, f'A Text (SMS) Notification Has Been Sent to '+ userdefault.first_name)
                 elif(userextended.carrier == 'T-Mobile'):
                     if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
                         text = EmailMessage(
@@ -223,7 +223,7 @@ class UserPostListView(ListView):
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
+                    messages.success(request, f'A Text (SMS) Notification Has Been Sent to '+ userdefault.first_name)
                 elif(userextended.carrier == 'Virgin'):
                     if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
                         text = EmailMessage(
@@ -242,7 +242,7 @@ class UserPostListView(ListView):
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     text.send()
-                    messages.success(request, f'Your Phone Message Has Been Sent')
+                    messages.success(request, f'A Text (SMS) Notification Has Been Sent to '+ userdefault.first_name)
 
                 if(message1=="" and message2=="" and message3=="" and message4=="" and message5=="" and message6==""):
                     email = EmailMessage(
@@ -261,7 +261,7 @@ class UserPostListView(ListView):
                     headers = {'Reply-To': 'contact_email@gmail.com' }
                     )
                 email.send()   
-                messages.success(request, f'Your Email Message Has Been Sent t00o '+ userdefault.first_name) 
+                messages.success(request, f'An Email Notification Has Been Sent to '+ userdefault.first_name) 
                 
         elif(userextended.phone_notifications == False):
             if(request.GET.get('certbtn')):
@@ -282,7 +282,7 @@ class UserPostListView(ListView):
                     headers = {'Reply-To': 'contact_email@gmail.com' }
                     )
                 email.send()   
-                messages.success(request, f'Your Email Message Has Been Sent to00 '+ userdefault.first_name) 
+                messages.success(request, f'An Email Notification Has Been Sent to '+ userdefault.first_name) 
 
 
         return super(UserPostListView, self).get(request, *args, **kwargs)

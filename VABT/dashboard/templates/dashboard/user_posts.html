@@ -3,7 +3,7 @@
 {% block content %}
 {% block submit_buttons_bottom %}
 
-<script> function myFunc() { alert("You are about to certify this form") }</script>
+<script> function myFunc() { alert("Notification has been sent!") }</script>
 {% for post in posts %}
 {% if post.student.username == view.kwargs.username %}
         <article class="media content-section">
@@ -152,8 +152,8 @@
 {% endfor %}
 
 
-    <form action="#" method="get">
-        <input type="submit" class="btn btn-success btn-lg btn-block" value="Notify Student" name="certbtn">
+    <form action="#" method="get" >
+        <input type="submit" onclick="myFunc" class="btn btn-success btn-lg btn-block" value="Notify Student" name="certbtn">
     </form>
 {% endblock submit_buttons_bottom %}
 {% endblock content %}
