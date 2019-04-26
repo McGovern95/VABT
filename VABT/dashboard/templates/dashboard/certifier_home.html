@@ -31,6 +31,31 @@
          
                             </div>
                                 <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
+                         <!--progress bar begins here!-->
+
+                        <div>          
+                        {% if post.progress == 0 %}
+                          <a>No forms has been certified yet.</a>
+                        {% endif %}
+                        {% if post.progress == 1 %}
+                             <a>1/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 2 %}
+                             <a>2/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 3 %}
+                             <a>3/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 4 %}
+                             <a>4/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 5 %}
+                             <a>5/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 6 %}
+                             <a>certified</a>
+                        {% endif %}
+                             </div>
                         </div>
                     </article>
                 {% endif %}
@@ -48,6 +73,29 @@
          
                             </div>
                                 <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
+                        <div>          
+                        {% if post.progress == 0 %}
+                          <a>No forms has been certified yet.</a>
+                        {% endif %}
+                        {% if post.progress == 1 %}
+                             <a>1/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 2 %}
+                             <a>2/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 3 %}
+                             <a>3/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 4 %}
+                             <a>4/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 5 %}
+                             <a>5/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 6 %}
+                             <a>certified</a>
+                        {% endif %}
+                             </div>
                         </div>
                     </article>
                 {% endif %}
@@ -65,6 +113,29 @@
                                 <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
                             </div>
                                 <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
+                        <div>          
+                        {% if post.progress == 0 %}
+                          <a>No forms has been certified yet.</a>
+                        {% endif %}
+                        {% if post.progress == 1 %}
+                             <a>1/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 2 %}
+                             <a>2/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 3 %}
+                             <a>3/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 4 %}
+                             <a>4/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 5 %}
+                             <a>5/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 6 %}
+                             <a>certified</a>
+                        {% endif %}
+                             </div>
                         </div>
                 </article>
                 {% endif %}
@@ -81,6 +152,29 @@
                                 <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
                             </div>
                                 <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
+                        <div>          
+                        {% if post.progress == 0 %}
+                          <a>No forms has been certified yet.</a>
+                        {% endif %}
+                        {% if post.progress == 1 %}
+                             <a>1/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 2 %}
+                             <a>2/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 3 %}
+                             <a>3/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 4 %}
+                             <a>4/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 5 %}
+                             <a>5/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 6 %}
+                             <a>certified</a>
+                        {% endif %}
+                             </div>
                         </div>
                 </article>
                 {% endif %}
@@ -96,7 +190,29 @@
                                 <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
                             </div>
                                 <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
-                        </div>
+                        <div>          
+                        {% if post.progress == 0 %}
+                          <a>No forms has been certified yet.</a>
+                        {% endif %}
+                        {% if post.progress == 1 %}
+                             <a>1/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 2 %}
+                             <a>2/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 3 %}
+                             <a>3/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 4 %}
+                             <a>4/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 5 %}
+                             <a>5/6 forms certified</a>
+                        {% endif %}
+                        {% if post.progress == 6 %}
+                             <a>certified</a>
+                        {% endif %}
+                             </div>                        </div>
                 </article>
                 {% endif %}
             {% endfor %} 

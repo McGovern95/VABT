@@ -198,7 +198,7 @@ class UserPostListView(ListView):
                         'VABT Notification ',
                         'You are now Cetified! \n',
                         'VABT Notifications' +'<sender@gmail.com>',
-                        [userextended.phone_number +'@vtext.com'],
+                        [userextended.phone_number +'@txt.att.net'],
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     else:
@@ -217,7 +217,7 @@ class UserPostListView(ListView):
                         'VABT Notification ',
                         'You are now Cetified! \n',
                         'VABT Notifications' +'<sender@gmail.com>',
-                        [userextended.phone_number +'@vtext.com'],
+                        [userextended.phone_number +'@messaging.sprintpcs.com'],
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     else:
@@ -236,7 +236,7 @@ class UserPostListView(ListView):
                         'VABT Notification ',
                         'You are now Cetified! \n',
                         'VABT Notifications' +'<sender@gmail.com>',
-                        [userextended.phone_number +'@vtext.com'],
+                        [userextended.phone_number +'@tmomail.net'],
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     else:
@@ -255,7 +255,7 @@ class UserPostListView(ListView):
                         'VABT Notification ',
                         'You are now Cetified! \n',
                         'VABT Notifications' +'<sender@gmail.com>',
-                        [userextended.phone_number +'@vtext.com'],
+                        [userextended.phone_number +'@vmobl.com'],
                         headers = {'Reply-To': 'contact_email@gmail.com' }
                         )
                     else:
@@ -274,7 +274,7 @@ class UserPostListView(ListView):
                     'VABT Notification ',
                     'You are now Cetified! \n',
                     'VABT Notifications' +'<sender@gmail.com>',
-                    [userextended.phone_number +'@vtext.com'],
+                    [userdefault.email],
                     headers = {'Reply-To': 'contact_email@gmail.com' }
                     )
                 else:

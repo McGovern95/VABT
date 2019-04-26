@@ -34,6 +34,7 @@
        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Progress</div>
 -->
     {% if post.progress == 0 %}
+      <h5>No forms has been certified yet.</h5>
       <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     {% endif %}
     {% if post.progress == 1 %}
@@ -52,7 +53,7 @@
       <div class="progress-bar bg-info" role="progressbar" style="width: 83%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     {% endif %}
     {% if post.progress == 6 %}
-      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><h5>Certified</h5></div>
+      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><h5 style="color:white;">Certified</h5></div>
     {% endif %}
 </div>
 
