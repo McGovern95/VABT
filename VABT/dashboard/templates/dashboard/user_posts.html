@@ -12,13 +12,52 @@
                 <div class="article-metadata">
                     <small class="text-muted">Begin date: {{ post.date_began|date:"F d, Y T g:i" }}</small>
                 </div>
-                <h4><a class="article-title" href="{% url 'post-detail' post.id %}">Name: {{ post.student.last_name }},{{post.student.first_name}}</a></h4>
+                <h4><a class="article-title" href="#">Name: {{ post.student.last_name }},{{post.student.first_name}}</a></h4>
                 <h5>Email: {{ post.student.email }}</h5>
                 <h5>Phone#: {{ post.student.userextended.phone_number }}</h5>
                 <p class="article-content">Notes: {{ post.comment }}</p>
             </div>
                 
         </article>
+
+  <!--progress bar begins here!-->
+<div class="progress mb-3" style="height: 50px">
+    <!--
+  <div class="progress-bar bg-success" role="progressbar" {% if post.progress == 0 %} style="width: 0%;" {% endif %}
+       {% if post.progress == 1 %} style="width: 16%;" {% endif %}
+       {% if post.progress == 2 %} style="width: 32%;" {% endif %}
+       {% if post.progress == 3 %} style="width: 48%;" {% endif %}
+       {% if post.progress == 4 %} style="width: 64%;" {% endif %}
+       {% if post.progress == 5 %} style="width: 83%;" {% endif %}
+       {% if post.progress == 6 %} style="width: 100%;" {% endif %}
+       
+       aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Progress</div>
+-->
+    {% if post.progress == 0 %}
+      <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+    {% if post.progress == 1 %}
+      <div class="progress-bar bg-danger" role="progressbar" style="width: 16%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+    {% if post.progress == 2 %}
+      <div class="progress-bar bg-warning" role="progressbar" style="width: 32%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+    {% if post.progress == 3 %}
+      <div class="progress-bar bg-warning" role="progressbar" style="width: 48%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+    {% if post.progress == 4 %}
+      <div class="progress-bar bg-info" role="progressbar" style="width: 64%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+    {% if post.progress == 5 %}
+      <div class="progress-bar bg-info" role="progressbar" style="width: 83%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+    {% if post.progress == 6 %}
+      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><h5>Certified</h5></div>
+    {% endif %}
+</div>
+
+
+
   <!--table begins here!-->
         <table class="table table-hover">
         <caption>Last Certified by:</caption>
@@ -28,7 +67,6 @@
                 <th scope="col">Edit Date</th>
                 <th scope="col">Action</th>
                 <th scope="col">Status</th>
-
             </tr>
         </thead>
         <tbody>
@@ -111,7 +149,7 @@
    
         <!--row5 begins here!-->
 
-   <!-- {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '35' %} -->
+   <!-- {% if post.student.userextended.chapter == '33' or post.student.userextended.chapter == '30' or post.student.userextended.chapter == '35' or post.student.userextended.chapter == '1606' or post.student.userextended.chapter == '31' %} -->
             <tr> 
                 {%if not post.student.userextended.conc_stud_sched %}
                     <th><a href="#" class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ post.student.first_name }} {{ post.student.last_name }} has not submitted this form yet." disabled>Student has not uploaded MVP Information Sheet</a></th>

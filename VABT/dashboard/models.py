@@ -12,13 +12,15 @@ class Post(models.Model):
     date_began = models.DateTimeField(default=timezone.now)
     last_certifier = models.CharField(max_length=80,default='None')
     student = models.ForeignKey(User, related_name='certs', on_delete=models.CASCADE)
+    progress = models.IntegerField(default=0)
+
+
 
     date_cert = models.DateTimeField(default=timezone.now)
     Certificate_of_eligibility = models.BooleanField(default=False)
 
     date_info = models.DateTimeField(default=timezone.now)
     MVP_information_sheet = models.BooleanField(default=False)
-
 
     date_respo = models.DateTimeField(default=timezone.now)
     Student_responsibility = models.BooleanField(default=False)
