@@ -3,27 +3,30 @@
  
     {% if user.userextended.is_firsttime %}
         <form method="post" enctype="multipart/form-data">
-          <table style="width:100%">
+          <table class="table table-hover">
           <caption></caption>
-          <tr>
-            <th>First Visit Files </th>
-            <th>Approved?</th> 
-            <th>Upload</th>
-          </tr>
-          <tr>
-            <td><a href="https://www.va.gov/education/how-to-apply/" target="_blank">Certificate of Eligibility</a></td>
-             {% for p in certs %}
-                {%if p.student.username == user.username and p.Certificate_of_eligibility == True %}
-                <td><img src="/media/green_check.png"></td>
-                {%elif p.student.username == user.username and p.Certificate_of_eligibility == False %}
-                <td><img src="/media/red_check.png"></td>
-                {%endif%}
-             {% endfor %}
-            <td>
-                {% csrf_token %}
-                {{ cert_form.as_p}}
-            </td>
-          </tr>
+          <thead class="thread-light">
+            <tr>
+                <th scope="col">First Visit Files </th>
+                <th scope="col">Approved?</th> 
+                <th scope="col">Upload</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td><a href="https://www.va.gov/education/how-to-apply/" target="_blank">Certificate of Eligibility</a></td>
+                 {% for p in certs %}
+                    {%if p.student.username == user.username and p.Certificate_of_eligibility == True %}
+                    <td><img src="/media/green_check.png"></td>
+                    {%elif p.student.username == user.username and p.Certificate_of_eligibility == False %}
+                    <td><img src="/media/red_check.png"></td>
+                    {%endif%}
+                 {% endfor %}
+                <td>
+                    {% csrf_token %}
+                    {{ cert_form.as_p}}
+                </td>
+            </tr>
           <tr>
             <td><a href="https://mvp.nmsu.edu/files/2018/09/MVP-Information-Sheet.pdf" target="_blank">NMSU MVP Information Sheet</a></td>
             {% for p in certs %}
@@ -72,6 +75,7 @@
                 {{ resid_form.as_p }}          
             </td>
           </tr>
+           </tbody>
         </table>
       <div style="text-align:right">
             <button class="btn btn-outline-info" type="submit">Upload First Visit Files</button>  
@@ -80,13 +84,16 @@
     {% endif %}
     {% if user.userextended.chapter == '33' %}
       <form method="post" enctype="multipart/form-data">
-        <table style="width:100%">
+        <table class="table table-hover">
         <caption></caption>
+        <thead class="thread-light">
           <tr>
-            <th>Chapter 33 Files</th>
-            <th>Approved?</th>
-            <th>Upload</th>
+            <th scope="col">Chapter 33 Files</th>
+            <th scope="col">Approved?</th>
+            <th scope="col">Upload</th>
           </tr>
+          </thead>
+          <tbody>
           <tr>
             <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule </a></td>
             {% for p in certs %}
@@ -115,6 +122,7 @@
                 {{ star_form.as_p }}  
             </td>
           </tr>
+          </tbody>
         </table>
        <div style="text-align:right">
             <button class="btn btn-outline-info" type="submit">Upload Chapter 33 Files</button>
@@ -122,12 +130,13 @@
        </form>
     {% elif user.userextended.chapter == '31' %}
        <form method="post" enctype="multipart/form-data">
-       <table style="width:100%">
-       <caption></caption>
+       <table class="table table-hover">
+        <caption></caption>
+        <thead class="thread-light">
           <tr>
-            <th>Chapter 31 Files</th>
-            <th>Approved?</th> 
-            <th>Upload</th>
+            <th scope="col">Chapter 31 Files</th>
+            <th scope="col">Approved?</th> 
+            <th scope="col">Upload</th>
           </tr>
           <tr>
             <td><a href="https://my.nmsu.edu" target="_blank">Concise Student Schedule </a></td>
@@ -284,6 +293,7 @@
                 {{ star_form.as_p }}
             </td>
           </tr>
+        </tbody>
         </table>
         <div style="text-align:right">
              <button class="btn btn-outline-info" type="submit">Upload Chapter 1606 Files</button>
