@@ -23,7 +23,7 @@ def register(request):
             user.refresh_from_db()
             user.save()
 
-            Post.objects.create(title="Checklist for"+user.last_name,comment="Default", student = user)
+            Post.objects.create(title="Checklist for "+user.last_name,comment="No Notes Set", student = user)
 
             request.user.is_staff = False
             request.user.is_student = True

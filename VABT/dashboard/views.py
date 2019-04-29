@@ -34,7 +34,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'dashboard/certifier_home.html'
     context_object_name = 'posts'
-   #ordering  = ['-date_posted']
+    ordering  = ['progress']
 
 #@admin.register(Post)  
 class UserPostListView(ListView):
@@ -59,13 +59,17 @@ class UserPostListView(ListView):
                studentcert.Certificate_of_eligibility = True
                if studentcert.progress != 6:
                    studentcert.progress += 1
+                   userextended.progress_student +=1
                studentcert.save()
+               userextended.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Certificate_of_eligibility == True):
                 studentcert.Certificate_of_eligibility = False
                 if studentcert.progress != 0:
                    studentcert.progress -= 1
+                   userextended.progress_student -=1
                 studentcert.save()
+                userextended.save()
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolinfocert')):
@@ -74,13 +78,17 @@ class UserPostListView(ListView):
                studentcert.MVP_information_sheet = True
                if studentcert.progress != 6:
                    studentcert.progress += 1
+                   userextended.progress_student +=1
                studentcert.save()
+               userextended.save()
               # messages.success(request, f' set to True')
             elif(studentcert.MVP_information_sheet == True):
                 studentcert.MVP_information_sheet = False
                 if studentcert.progress != 0:
                    studentcert.progress -= 1
+                   userextended.progress_student -=1
                 studentcert.save()
+                userextended.save()
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolrespcert')):
@@ -89,14 +97,18 @@ class UserPostListView(ListView):
                studentcert.Student_responsibility = True
                if studentcert.progress != 6:
                    studentcert.progress += 1
+                   userextended.progress_student +=1
                studentcert.save()
+               userextended.save()
 
               # messages.success(request, f' set to True')
             elif(studentcert.Student_responsibility == True):
                 studentcert.Student_responsibility = False
                 if studentcert.progress != 0:
                    studentcert.progress -= 1
+                   userextended.progress_student -=1
                 studentcert.save()
+                userextended.save()
                # messages.success(request, f' set to False')
 
         if(request.GET.get('booltuition')):
@@ -105,13 +117,17 @@ class UserPostListView(ListView):
                studentcert.Resident_tuition_app = True
                if studentcert.progress != 6:
                    studentcert.progress += 1
+                   userextended.progress_student +=1
                studentcert.save()
+               userextended.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Resident_tuition_app == True):
                 studentcert.Resident_tuition_app = False
                 if studentcert.progress != 0:
                    studentcert.progress -= 1
+                   userextended.progress_student -=1
                 studentcert.save()
+                userextended.save()
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolconcise')):
@@ -120,13 +136,17 @@ class UserPostListView(ListView):
                studentcert.Concise_student_schedule = True
                if studentcert.progress != 6:
                    studentcert.progress += 1
+                   userextended.progress_student +=1
                studentcert.save()
+               userextended.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Concise_student_schedule == True):
                 studentcert.Concise_student_schedule = False
                 if studentcert.progress != 0:
                    studentcert.progress -= 1
+                   userextended.progress_student -=1
                 studentcert.save()
+                userextended.save()
                # messages.success(request, f' set to False')
 
         if(request.GET.get('boolaudit')):
@@ -135,15 +155,21 @@ class UserPostListView(ListView):
                studentcert.Star_degree_audit = True
                if studentcert.progress != 6:
                    studentcert.progress += 1
+                   userextended.progress_student +=1
                studentcert.save()
+               userextended.save()
               # messages.success(request, f' set to True')
             elif(studentcert.Star_degree_audit == True):
                 studentcert.Star_degree_audit = False
                 if studentcert.progress != 0:
                    studentcert.progress -= 1
+                   userextended.progress_student -=1
                 studentcert.save()
-               # messages.success(request, f' set to False')
+                userextended.save()
+                        
 
+
+               # messages.success(request, f' set to False')
         if(studentcert.Certificate_of_eligibility == False ):
             message1 = "Certificate of eligibility (COE) \n"
         if(studentcert.MVP_information_sheet == False ):

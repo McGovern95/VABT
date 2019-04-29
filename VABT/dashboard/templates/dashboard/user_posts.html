@@ -4,10 +4,16 @@
 {% block submit_buttons_bottom %}
 
 <script> function myFunc() { alert("Notification has been sent!") }</script>
+
+
+
 {% for post in posts %}
+
+
+
 {% if post.student.username == view.kwargs.username %}
         <article class="media content-section">
-            <img class="rounded-circle img-thumbnail mr-4" src="{{ post.student.profile.image.url }}" />
+            <img class="rounded-circle img-thumbnail mr-4 grow" src="{{ post.student.profile.image.url }}" />
             <div class="media-body">
                 <div class="article-metadata">
                     <small class="text-muted">Begin date: {{ post.date_began|date:"F d, Y T g:i" }}</small>
@@ -34,7 +40,7 @@
        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Progress</div>
 -->
     {% if post.progress == 0 %}
-      <h5>No forms has been certified yet.</h5>
+      <h5 style="color:dimgrey;">No forms has been certified yet.</h5>
       <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
     {% endif %}
     {% if post.progress == 1 %}
@@ -68,6 +74,7 @@
                 <th scope="col">Edit Date</th>
                 <th scope="col">Action</th>
                 <th scope="col">Status</th>
+
             </tr>
         </thead>
         <tbody>

@@ -23,6 +23,9 @@ class UserExtended(models.Model):
     phone_notifications = models.BooleanField(default=False)
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     carrier = models.CharField(max_length=15,choices=[('AT&T','AT&T'),('Verizon','Verizon'),('Sprint','Sprint'),('T-Mobile','T-Mobile'),('Virgin', 'Virgin')], blank=True)
+    progress_student = models.IntegerField(default=0)
+
+   
     ##Checklist data
     #Certificate_of_eligibility = models.BooleanField(default=False)
     #MVP_information_sheet = models.BooleanField(default=False)
@@ -63,8 +66,8 @@ class Profile(models.Model): #one to one
 
         img = Image.open(self.image.path)
 
-        if img.height > 400 or img.width > 400:
-            output_size = (400,300)
+        if img.height > 300 or img.width > 300:
+            output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
 

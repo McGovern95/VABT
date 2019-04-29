@@ -23,12 +23,15 @@
         <div role"tabpanel" class="tab-pane active" id="chapter33">
             {% for post in posts %}
                 {% if post.student.userextended.chapter == '33' %}
+
                     <article class="media content-section">
                         <img class="rounded-circle article-img" src="{{ post.student.profile.image.url }}" />
                         <div class="media-body">
+                            
                             <div class="article-metadata">
                                 <a class="mr-2" href="{% url 'user-posts' post.student.username %}">{{ post.student.last_name }} {{ post.student.first_name }}</a>
-         
+                                <small class="text-muted ml-10">Begin date: {{ post.date_began|date:"F d, Y T g:i" }}</small>
+
                             </div>
                                 <a class="mr-2">Chapter-{{ post.student.userextended.chapter }}</a>
                          <!--progress bar begins here!-->
