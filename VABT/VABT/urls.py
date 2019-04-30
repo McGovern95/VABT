@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from users import views as user_views
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('registers/', user_views.register, name='registers'),
     path('profile/', user_views.profile, name='profile'),
