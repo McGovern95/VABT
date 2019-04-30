@@ -11,7 +11,7 @@ class Post(models.Model):
     comment = models.TextField()
     date_began = models.DateTimeField(default=timezone.now)
     last_certifier = models.CharField(max_length=80,default='None')
-    student = models.ForeignKey(User, related_name='certs', on_delete=models.CASCADE)
+    student = models.OneToOneField(User, related_name='certs', on_delete=models.CASCADE)
     progress = models.IntegerField(default=0)
 
 
