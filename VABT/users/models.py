@@ -15,24 +15,15 @@ from django.core.validators import RegexValidator
 class UserExtended(models.Model):
     #fields for checking 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    chapter = models.CharField(max_length=4,choices=[('33','33'), ('30','30'), ('31','31'),('35','35'),('1606','1606')],blank=True)
-    is_firsttime = models.BooleanField(default=True)
-    is_student = models.BooleanField(default=True)
+    chapter = models.CharField(max_length=4,choices=[('33','33'), ('30','30'), ('31','31'),('35','35'),('1606','1606')],blank=True, null=True)
+    is_firsttime = models.BooleanField(null=True)
+    is_student = models.BooleanField()
     #regular expression validator for phone numbers
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     phone_notifications = models.BooleanField(default=False)
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     carrier = models.CharField(max_length=15,choices=[('AT&T','AT&T'),('Verizon','Verizon'),('Sprint','Sprint'),('T-Mobile','T-Mobile'),('Virgin', 'Virgin')], blank=True)
     progress_student = models.IntegerField(default=0)
-
-   
-    ##Checklist data
-    #Certificate_of_eligibility = models.BooleanField(default=False)
-    #MVP_information_sheet = models.BooleanField(default=False)
-    #Student_responsibility = models.BooleanField(default=False)
-    #Resident_tuition_app = models.BooleanField(default=False)
-    #Concise_student_schedule = models.BooleanField(default=False)
-    #Star_degree_audit = models.BooleanField(default=False)
 
     #saves file to a userid directory
     def user_directory_path(instance, filename):

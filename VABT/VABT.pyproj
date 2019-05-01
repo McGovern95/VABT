@@ -30,7 +30,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="dashboard\admin.py" />
     <Compile Include="dashboard\apps.py" />
     <Compile Include="dashboard\decorators.py">
       <SubType>Code</SubType>
