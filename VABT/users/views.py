@@ -10,6 +10,22 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UserExte
 # Create your views here.
 
 def register(request):
+    """
+    The register page for students, uses the forms UserRegisterForm & UserExtendedRegisterForm.
+    Manually creates Post object for student when registering. 
+                         
+    **Context**
+    form
+    formExtended
+    user
+
+    ``mymodel``
+        An instance of :model:`users.UserExtended`.
+
+    **Template:**
+
+    :template:`users/registers.html`
+    """
     if request.method=='POST':
         form = UserRegisterForm(request.POST)
         formExtended = UserExtendedRegisterForm(request.POST)
@@ -22,7 +38,7 @@ def register(request):
             user.userextended.save()
             user.refresh_from_db()
             user.save()
-
+            #manually create a Post Object
             Post.objects.create(title="Checklist for "+user.last_name,comment="No Notes Set", student = user)
 
             request.user.is_staff = False
