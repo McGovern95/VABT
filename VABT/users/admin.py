@@ -3,7 +3,6 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from .models import *
 from dashboard.models import Post
-# Register your models here.
 
 #class PostInline(admin.StackedInline):
 #    model = Post

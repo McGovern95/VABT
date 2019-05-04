@@ -13,6 +13,11 @@ from django.core.validators import RegexValidator
     #ex.is_student ~ is the boolean for is_student
     #ex.is_firsttime ~ boolean for first time
 class UserExtended(models.Model):
+    """
+    Extends the model :model:`auth.User` to be of use for our VA needs. Thinks like chapter, phone, whether the user is a student, etc.
+
+    """
+
     #fields for checking 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     chapter = models.CharField(max_length=4,choices=[('33','33'), ('30','30'), ('31','31'),('35','35'),('1606','1606')],blank=True, null=True)
@@ -45,7 +50,11 @@ class UserExtended(models.Model):
         super(UserExtended,self).save(*args,**kwargs)
 
 
-class Profile(models.Model): #one to one
+class Profile(models.Model): 
+    """
+    a OneToOne relationship to :model:`auth.User` This model is for profile related things.
+
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     
