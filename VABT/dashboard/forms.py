@@ -1,6 +1,8 @@
 from django import forms
 from users.models import UserExtended
 
+#forms used for file upload
+
 class CertForm(forms.ModelForm):
     class Meta:
         model = UserExtended

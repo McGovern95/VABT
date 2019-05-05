@@ -9,6 +9,7 @@ from .views import (
         )
 from . import views
 
+#url patterns for dashboard
 urlpatterns = [
     path('',views.home, name='dashboard-home'),
     path('certifier_home', PostListView.as_view(), name='certifier-home'),
@@ -17,6 +18,6 @@ urlpatterns = [
     path('student_home/', views.student_home,name='student-home'),
     path('about/', views.about, name='dashboard-about'),
     path('contact/', views.contact, name='dashboard-contact'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#for uploading files 
 
 #<app>/<model>_<viewtype>.html

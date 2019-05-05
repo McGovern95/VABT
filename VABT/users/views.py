@@ -99,6 +99,7 @@ def alerts(request):
 
     """
     I don't know, Ian made this.
+
     """
     alerts = Alerts.objects.filter(user_id=request.user)
 

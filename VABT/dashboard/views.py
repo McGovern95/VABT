@@ -394,6 +394,14 @@ class UserPostListView(ListView):
 
     
 class PostDetailView(DetailView):
+    """
+   does nothing now 
+
+    **Template:**
+
+    NONE
+
+    """
     model = Post
 
 def about(request):
@@ -433,6 +441,7 @@ def student_home(request):
 
     :template:`users/student_home.html`
     """
+    #instantiates forms
     if request.method=='POST':
         cert_form = CertForm(request.POST, request.FILES, instance=request.user.userextended)
         mvp_form = MVPForm(request.POST, request.FILES, instance=request.user.userextended)
@@ -440,7 +449,7 @@ def student_home(request):
         resid_form = ResidTuitAppForm(request.POST, request.FILES, instance=request.user.userextended)
         conc_form = ConcStudSchedForm(request.POST, request.FILES, instance=request.user.userextended)
         star_form = StarDegAuditForm(request.POST, request.FILES, instance=request.user.userextended)
-
+        #saves the file (even if no file, it is still considered valid, although past file wont be overwritten)
         if cert_form.is_valid() and mvp_form.is_valid() and stud_form.is_valid() and resid_form.is_valid() and conc_form.is_valid() and star_form.is_valid() == True:     
             cert_form.save()
             mvp_form.save()
@@ -449,6 +458,7 @@ def student_home(request):
             conc_form.save()
             star_form.save()
             messages.success(request, f'Your File(s) has been uploaded!')
+    #returns form as instance of model
     else:
         cert_form = CertForm(instance=request.user.userextended)
         mvp_form = MVPForm(instance=request.user.userextended)
@@ -457,8 +467,10 @@ def student_home(request):
         conc_form = ConcStudSchedForm(instance=request.user.userextended)
         star_form = StarDegAuditForm(instance=request.user.userextended)
 
-    certs = Post.objects.all()#for the certification
+    #gets the instance of Post objects for template
+    certs = Post.objects.all()
 
+    #allows variables to be called in template
     context = {
             'cert_form': cert_form,
             'mvp_form' : mvp_form,
@@ -479,14 +491,6 @@ def contact(request):
     :template:`dashbaord/contact.html`
     """
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
-
-
-
-#
-#
-#NOTES
-#
-#
 
 #CHRISTIAN DONT DELETE THIS
 #Alltel: phonenumber@message.alltel.com

@@ -9,7 +9,7 @@ from dashboard.models import Post
 #    can_delete = True
 #    verbose_name_plural = 'Certification Configuration'
 
-
+#so userextended can be involved in user creation 
 class UserExtendedInline(admin.StackedInline):
     model = UserExtended
     can_delete = True
@@ -18,6 +18,7 @@ class UserExtendedInline(admin.StackedInline):
 class UserAdmin(BaseUserAdmin):
     inlines = (UserExtendedInline,)
 
+#registers models so admin can edit them
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Profile)

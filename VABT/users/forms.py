@@ -5,6 +5,8 @@ from .models import Profile
 from dashboard.models import Post
 from users.models import UserExtended
 
+#forms for user registering and profile updating
+
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
    

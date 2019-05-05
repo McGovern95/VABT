@@ -4,6 +4,8 @@ from django.dispatch import receiver
 from .models import Profile, UserExtended
 from dashboard.models import Post
 
+#related to admin created users, some bugs still
+
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
