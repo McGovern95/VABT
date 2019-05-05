@@ -8,9 +8,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### Visual Studio
 
-This method is as easy as cloning the repo to your local machine and opening the .sln file with Visual Studio
+This method is as easy as cloning the repo to your local machine and opening the .sln file with Visual Studio. You then just right click on your python env and install requirements.
 
 #### Command Line 
+
+This method requires [Python](https://www.python.org/downloads/) 
 
 First, clone the repository to your local machine:
 
