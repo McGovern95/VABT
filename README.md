@@ -4,7 +4,13 @@ VABT is a web application for student veterans under the Military and Veterans A
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. There are two ways to go about installing this system, with our .sln file for visual studio, or through the command line.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. There are two ways to go about installing this system, with our .sln file for visual studio, or through the command line. If using our database, you can create your superuser or use ours: 
+```bash
+Username: admin
+password: vabt1234
+```
+all users have the password vabt1234
+
 
 #### Visual Studio
 
@@ -44,7 +50,11 @@ The project will be available at **127.0.0.1:8000**.
 
 ## Documentation
 
-All code documentation is through our admin interface. Please log in as a super user and click on the top right - "Documentation"
+All code documentation is through our admin interface. Please log in as a super user, go to the url:
+```bash
+127.0.0.1:8000/admin
+```
+and click on the top right - "Documentation"
 
 
 ## Deployment
