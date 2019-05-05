@@ -1,3 +1,5 @@
-# VABT
+# VABT (Veterans Affairs Benefits Tracker)
 
-Repo for the Veterans Affairs Benefits Tracker app for the NMSU departments mvp.
+Description:
+  Repo for the Veterans Affairs Benefits Tracker app for the NMSU departments mvp.
+
