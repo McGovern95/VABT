@@ -28,7 +28,9 @@ Additional development time is needed to deploy to a live server.
 * [Django](https://www.djangoproject.com/start/overview/) - The web framework used
 * [Visual Studio](https://visualstudio.microsoft.com/) - The IDE used
 
+## User Guide
 
+~ link to our user guide 
 
 ## Authors
 
