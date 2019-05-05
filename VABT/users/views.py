@@ -20,7 +20,7 @@ def register(request):
     user
 
     ``mymodel``
-        An instance of :model:`users.UserExtended`.
+        An instance of :model:`users.UserExtended` and :model:`auth.User`.
 
     **Template:**
 
@@ -57,6 +57,21 @@ def register(request):
 
 @login_required
 def profile(request):
+    """
+    The profile view for the user. requres user to be logged in the view. user can change their database values here.
+                         
+    **Context**
+    u_form 
+    p_form
+    ue_form
+
+    ``mymodel``
+        An instance of :model:`users.UserExtended` and :model:`auth.User`.
+
+    **Template:**
+
+    :template:`users/profile.html`
+    """
     if request.method=='POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -81,6 +96,10 @@ def profile(request):
 
 @user_passes_test(lambda u: u_form.is_staff)
 def alerts(request):
+
+    """
+    I don't know, Ian made this.
+    """
     alerts = Alerts.objects.filter(user_id=request.user)
 
     if request.method == 'POST':

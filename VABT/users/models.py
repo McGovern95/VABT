@@ -14,11 +14,11 @@ from django.core.validators import RegexValidator
     #ex.is_firsttime ~ boolean for first time
 class UserExtended(models.Model):
     """
-    Extends the model :model:`auth.User` to be of use for our VA needs. Thinks like chapter, phone, whether the user is a student, etc.
+    Extends the model :model:`auth.User` to be of use for our VA needs. Things like chapter, phone, whether the user is a student, etc.
 
     """
 
-    #fields for checking 
+    #model fields
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     chapter = models.CharField(max_length=4,choices=[('33','33'), ('30','30'), ('31','31'),('35','35'),('1606','1606')],blank=True, null=True)
     is_firsttime = models.BooleanField(null=True)
@@ -30,8 +30,11 @@ class UserExtended(models.Model):
     carrier = models.CharField(max_length=15,choices=[('AT&T','AT&T'),('Verizon','Verizon'),('Sprint','Sprint'),('T-Mobile','T-Mobile'),('Virgin', 'Virgin')], blank=True)
     progress_student = models.IntegerField(default=0)
 
-    #saves file to a userid directory
     def user_directory_path(instance, filename):
+        """
+        saves the user files in a directory named after their last and first name
+    
+        """
         return 'students/{0}_{1}/{2}'.format(instance.user.last_name,instance.user.first_name,filename)
 
     ###all files for first time peeps
@@ -65,7 +68,7 @@ class Profile(models.Model):
         super(Profile,self).save(*args,**kwargs)
 
         img = Image.open(self.image.path)
-
+        #resizes the image to 300x300
         if img.height > 300 or img.width > 300:
             output_size = (300,300)
             img.thumbnail(output_size)

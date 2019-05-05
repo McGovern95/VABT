@@ -7,6 +7,12 @@ from django.urls import reverse
 # Create your models here.
 
 class Post(models.Model):
+    """
+    model for our certification fields, named Post but will change in the future to something more relevant.
+    Takes in :model:`auth.User` for the foriegkey (can be onetoone).
+
+    """
+
     title = models.CharField(max_length=100, blank=True)
     comment = models.TextField(blank=True)
     date_began = models.DateTimeField(default=timezone.now)

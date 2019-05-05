@@ -20,39 +20,93 @@ from .models import Post
 from .models import User
 from .forms import  CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 from django.core.mail import EmailMessage
-#from django.http import HttpResponse
-#Create your views here.
 
-#CertForm, MVPForm, StudResponForm, ResidTuitAppForm, ConcStudSchedForm, StarDegAuditForm
 def home(request):
-        return render(request, 'dashboard/home.html')
+    """
+    renders the home page for an unathenticated user. 
 
-#for x in User
+    **Template:**
 
+    :template:`dashbaord/home.html`
+    """
+    return render(request, 'dashboard/home.html')
 
 class PostListView(ListView):
+    """
+    a ListView that renders the certifiers_home. 
+                         
+    **Context**
+    model
+    template_name
+    context_object_name
+    ordering
+
+    ``mymodel``
+        An instance of :model:`dashboard.Post`.
+
+    **Template:**
+
+    :template:`dashboard/certifier_home.html`
+
+    """
     model = Post
     template_name = 'dashboard/certifier_home.html'
     context_object_name = 'posts'
     ordering  = ['progress']
 
-#@admin.register(Post)  
+
 class UserPostListView(ListView):
+    """
+    a ListView that renders the userpost page. This is the longest function and houses our notifcation
+    and certifying features.
+                         
+    **Context**
+    template_name
+    context_object_name
+    user
+    userdefault
+    userextended
+    studentcert
+    date
+    email
+    text
+    message[1,2,3,4,5,6]
+
+    ``mymodel``
+        Uses all the models.
+
+    **Template:**
+
+    :template:`dashboard/user_posts.html`
+
+    """
     model = Post
     template_name = 'dashboard/user_posts.html'
     context_object_name = 'posts'
     def get_query_set(self):
+
+        """
+        gets the instance of the student when on their webpage. 
+
+        """
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(student=user)
     
-    #need to get the kwarg stuff for the email
+   
     def get(self, request, *args, **kwargs):
+
+        """
+        a general function (get) for ListView classes, our notifications
+        and certifying can work with buttons here.
+
+        """
+        #gets the students database fields
         userdefault = User.objects.get(username = kwargs.get('username'))
         userextended = UserExtended.objects.get(user=userdefault)
         studentcert = Post.objects.get(student=userdefault)
         date = timezone.now()
 
-   #buttons for certification 
+   #buttons for certification and progress bars
         if(request.GET.get('boolcoecert')):
             studentcert.date_cert = date
             if(studentcert.Certificate_of_eligibility == False):
@@ -169,7 +223,7 @@ class UserPostListView(ListView):
                         
 
 
-               # messages.success(request, f' set to False')
+        #automated messages for notifcations
         if(studentcert.Certificate_of_eligibility == False ):
             message1 = "Certificate of eligibility (COE) \n"
         if(studentcert.MVP_information_sheet == False ):
@@ -343,14 +397,42 @@ class PostDetailView(DetailView):
     model = Post
 
 def about(request):
+    """
+    renders the about page. 
+
+    **Template:**
+
+    :template:`dashbaord/about.html`
+    """
     return render(request, 'dashboard/about.html',{'title':'About'})
 
-@user_passes_test(lambda u: u.is_staff)
-def certifier_home(request):
-    return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
+#@user_passes_test(lambda u: u.is_staff)
+#def certifier_home(request):
+#    return render(request, 'dashboard/certifier_home.html',{'title':'Home' })
 
 @login_required
 def student_home(request):
+    """
+    this renders the student home page, file uploading is handling by this view 
+                         
+    **Context**
+    cert_form
+    mvp_form
+    stud_form
+    resid_form
+    conc_form
+    cert_form
+    star_form
+    certs
+
+
+    ``mymodel``
+        An instance of :model:`users.UserExtended` and :model:`auth.User`.
+
+    **Template:**
+
+    :template:`users/student_home.html`
+    """
     if request.method=='POST':
         cert_form = CertForm(request.POST, request.FILES, instance=request.user.userextended)
         mvp_form = MVPForm(request.POST, request.FILES, instance=request.user.userextended)
@@ -389,6 +471,13 @@ def student_home(request):
     return render(request, 'dashboard/student_home.html',context)
 
 def contact(request):
+    """
+    renders the contact page. 
+
+    **Template:**
+
+    :template:`dashbaord/contact.html`
+    """
     return render(request, 'dashboard/contact.html',{'title':'Contact'})
 
 
@@ -408,19 +497,3 @@ def contact(request):
 #Verizon: phonenumber@vtext.com
 #Nextel: phonenumber@messaging.nextel.com
 #US Cellular: phonenumber@mms.uscc.net
-
-#def Sendmail(request):
-#   if(request.GET.get('mybtn')):
-#    email = EmailMessage(
-#    'subject_message',
-#    'content_message',
-#    'sender smtp gmail' +'<sender@gmail.com>',
-#    ['user.email'],
-#    headers = {'Reply-To': 'contact_email@gmail.com' }
-#    )
-#    email.send()
-#    messages.success(request, f'Your Message Has Been Sent')
-
-
-#checklist stuff here: https://mvp.nmsu.edu/veterans-and-dependents/student-certification-checklists/
-#helpful repo im sure: https://github.com/sibtc/simple-file-upload ~ https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
