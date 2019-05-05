@@ -8,11 +8,37 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### Visual Studio
 
-This method is as easy as cloning the repo and opening the .sln file with Visual Studio
+This method is as easy as cloning the repo to your local machine and opening the .sln file with Visual Studio
 
 #### Command Line 
 
-This method requires 
+First, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/McGovern95/VABT.git
+```
+###### From within the VABT directory
+
+Install the requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create the database:
+
+```bash
+python manage.py migrate
+```
+
+Finally, run the development server:
+
+```bash
+python manage.py runserver
+```
+
+The project will be available at **127.0.0.1:8000**.
+
 
 ## Documentation
 
