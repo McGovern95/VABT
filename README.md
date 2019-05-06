@@ -25,7 +25,7 @@ First, clone the repository to your local machine:
 ```bash
 git clone https://github.com/McGovern95/VABT.git
 ```
-###### From within the VABT directory
+###### From within the /VABT/VABT directory
 
 Install the requirements:
 
